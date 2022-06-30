@@ -1,0 +1,21 @@
+a = true;
+void main()
+//shiraz university of technology
+{
+	string z="5; int a =3;
+	h=5;
+    int a = 5.8;
+    String a=;
+    /*
+        this is sample comment
+        int b='f'
+        sutech = 3
+    */
+    String sutechaa = "SUTECH";
+    for(a=3;a<"ali";a++)
+    /*{
+        a++;
+        b+=3;
+    }*/
+    {a--;}
+}
