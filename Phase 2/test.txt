@@ -1,0 +1,24 @@
+int c = 5;
+c++;
+c--;
+++c;
+--c;
+int c = 4;
+int a = 10;
+
+boolean d = true; // sdfjklasdhfjsdfhjs
+
+/* sdfsfasdfasdf */
+
+/*
+     int adolf = 2;
+     char cosmic = 'b';
+
+*/
+
+while ( a > 8 ) {
+     if ( 5 == 5 ) {
+          char c = 'a';
+          String b = "hello";
+     }
+}

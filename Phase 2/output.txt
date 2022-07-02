@@ -1,0 +1,4158 @@
+Grammar:
+
+Rule 0     S' -> block
+Rule 1     block -> <empty>
+Rule 2     block -> statements
+Rule 3     statements -> statements statement
+Rule 4     statements -> statement
+Rule 5     statement -> minusminus_statement
+Rule 6     statement -> plusplus_statement
+Rule 7     statement -> continue_statement
+Rule 8     statement -> break_statement
+Rule 9     statement -> return_statement
+Rule 10    statement -> switch_statement
+Rule 11    statement -> for_statement
+Rule 12    statement -> while_statement
+Rule 13    statement -> if_statement
+Rule 14    statement -> assign_statement
+Rule 15    statement -> main_declaration
+Rule 16    statement -> var_declaration
+Rule 17    plusplus_statement -> plusplus_expr SEMI
+Rule 18    minusminus_statement -> minusminus_expr SEMI
+Rule 19    continue_statement -> CONTINUE SEMI
+Rule 20    break_statement -> BREAK SEMI
+Rule 21    return_statement -> RETURN SEMI
+Rule 22    return_statement -> RETURN expr SEMI
+Rule 23    if_statement -> IF LPAREN expr RPAREN LBRACE block RBRACE else_statement
+Rule 24    else_statement -> <empty>
+Rule 25    else_statement -> ELSE LBRACE block RBRACE
+Rule 26    else_statement -> ELSE LPAREN expr RPAREN LBRACE block RBRACE else_statement
+Rule 27    while_statement -> WHILE LPAREN expr RPAREN LBRACE block RBRACE
+Rule 28    for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE
+Rule 29    switch_statement -> SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE
+Rule 30    switch_block -> <empty>
+Rule 31    switch_block -> block
+Rule 32    switch_block -> DEFAULT COL block
+Rule 33    switch_block -> CASE literal COL block switch_block
+Rule 34    var_declaration -> TYPE ID SEMI
+Rule 35    var_declaration -> TYPE ID ASSIGN expr SEMI
+Rule 36    main_declaration -> VOID MAIN LPAREN RPAREN LBRACE block RBRACE
+Rule 37    assign_statement -> ID ASSIGN expr SEMI
+Rule 38    expr -> literal
+Rule 39    expr -> ID
+Rule 40    expr -> minusminus_expr
+Rule 41    expr -> plusplus_expr
+Rule 42    expr -> LPAREN expr RPAREN
+Rule 43    expr -> NOT expr
+Rule 44    expr -> expr OR expr
+Rule 45    expr -> expr AND expr
+Rule 46    expr -> expr NEQUAL expr  [precedence=nonassoc, level=1]
+Rule 47    expr -> expr EQUAL expr  [precedence=nonassoc, level=1]
+Rule 48    expr -> expr GEQUAL expr  [precedence=nonassoc, level=1]
+Rule 49    expr -> expr GREATERT expr  [precedence=nonassoc, level=1]
+Rule 50    expr -> expr LEQUAL expr  [precedence=nonassoc, level=1]
+Rule 51    expr -> expr LESST expr  [precedence=nonassoc, level=1]
+Rule 52    expr -> expr MOD expr
+Rule 53    expr -> expr DIVIDE expr  [precedence=left, level=3]
+Rule 54    expr -> expr TIMES expr  [precedence=left, level=3]
+Rule 55    expr -> expr MINUS expr  [precedence=left, level=2]
+Rule 56    expr -> expr PLUS expr  [precedence=left, level=2]
+Rule 57    plusplus_expr -> PLUSPLUS ID
+Rule 58    plusplus_expr -> ID PLUSPLUS
+Rule 59    minusminus_expr -> MINUSMINUS ID
+Rule 60    minusminus_expr -> ID MINUSMINUS
+Rule 61    literal -> BOOLEAN
+Rule 62    literal -> STRING
+Rule 63    literal -> CHAR
+Rule 64    literal -> FLOAT
+Rule 65    literal -> INTEGER
+
+Terminals, with rules where they appear:
+
+AND                  : 45
+ASSIGN               : 35 37
+BOOLEAN              : 61
+BREAK                : 20
+CASE                 : 33
+CHAR                 : 63
+COL                  : 32 33
+CONTINUE             : 19
+DEFAULT              : 32
+DIVIDE               : 53
+ELSE                 : 25 26
+EQUAL                : 47
+FLOAT                : 64
+FOR                  : 28
+GEQUAL               : 48
+GREATERT             : 49
+ID                   : 29 34 35 37 39 57 58 59 60
+IF                   : 23
+INTEGER              : 65
+LBRACE               : 23 25 26 27 28 29 36
+LEQUAL               : 50
+LESST                : 51
+LPAREN               : 23 26 27 28 29 36 42
+MAIN                 : 36
+MINUS                : 55
+MINUSMINUS           : 59 60
+MOD                  : 52
+NEQUAL               : 46
+NOT                  : 43
+OR                   : 44
+PLUS                 : 56
+PLUSPLUS             : 57 58
+RBRACE               : 23 25 26 27 28 29 36
+RETURN               : 21 22
+RPAREN               : 23 26 27 28 29 36 42
+SEMI                 : 17 18 19 20 21 22 28 28 34 35 37
+STRING               : 62
+SWITCH               : 29
+TIMES                : 54
+TYPE                 : 34 35
+VOID                 : 36
+WHILE                : 27
+error                : 
+
+Nonterminals, with rules where they appear:
+
+assign_statement     : 14 28
+block                : 23 25 26 27 28 31 32 33 36 0
+break_statement      : 8
+continue_statement   : 7
+else_statement       : 23 26
+expr                 : 22 23 26 27 28 35 37 42 43 44 44 45 45 46 46 47 47 48 48 49 49 50 50 51 51 52 52 53 53 54 54 55 55 56 56
+for_statement        : 11
+if_statement         : 13
+literal              : 33 38
+main_declaration     : 15
+minusminus_expr      : 18 40
+minusminus_statement : 5
+plusplus_expr        : 17 41
+plusplus_statement   : 6
+return_statement     : 9
+statement            : 3 4
+statements           : 2 3
+switch_block         : 29 33
+switch_statement     : 10
+var_declaration      : 16 28
+while_statement      : 12
+
+
+state 0
+
+    (0) S' -> . block
+    (1) block -> .
+    (2) block -> . statements
+    (3) statements -> . statements statement
+    (4) statements -> . statement
+    (5) statement -> . minusminus_statement
+    (6) statement -> . plusplus_statement
+    (7) statement -> . continue_statement
+    (8) statement -> . break_statement
+    (9) statement -> . return_statement
+    (10) statement -> . switch_statement
+    (11) statement -> . for_statement
+    (12) statement -> . while_statement
+    (13) statement -> . if_statement
+    (14) statement -> . assign_statement
+    (15) statement -> . main_declaration
+    (16) statement -> . var_declaration
+    (18) minusminus_statement -> . minusminus_expr SEMI
+    (17) plusplus_statement -> . plusplus_expr SEMI
+    (19) continue_statement -> . CONTINUE SEMI
+    (20) break_statement -> . BREAK SEMI
+    (21) return_statement -> . RETURN SEMI
+    (22) return_statement -> . RETURN expr SEMI
+    (29) switch_statement -> . SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE
+    (28) for_statement -> . FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE
+    (27) while_statement -> . WHILE LPAREN expr RPAREN LBRACE block RBRACE
+    (23) if_statement -> . IF LPAREN expr RPAREN LBRACE block RBRACE else_statement
+    (37) assign_statement -> . ID ASSIGN expr SEMI
+    (36) main_declaration -> . VOID MAIN LPAREN RPAREN LBRACE block RBRACE
+    (34) var_declaration -> . TYPE ID SEMI
+    (35) var_declaration -> . TYPE ID ASSIGN expr SEMI
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    $end            reduce using rule 1 (block -> .)
+    CONTINUE        shift and go to state 18
+    BREAK           shift and go to state 19
+    RETURN          shift and go to state 20
+    SWITCH          shift and go to state 21
+    FOR             shift and go to state 23
+    WHILE           shift and go to state 24
+    IF              shift and go to state 25
+    ID              shift and go to state 22
+    VOID            shift and go to state 26
+    TYPE            shift and go to state 27
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    block                          shift and go to state 1
+    statements                     shift and go to state 2
+    statement                      shift and go to state 3
+    minusminus_statement           shift and go to state 4
+    plusplus_statement             shift and go to state 5
+    continue_statement             shift and go to state 6
+    break_statement                shift and go to state 7
+    return_statement               shift and go to state 8
+    switch_statement               shift and go to state 9
+    for_statement                  shift and go to state 10
+    while_statement                shift and go to state 11
+    if_statement                   shift and go to state 12
+    assign_statement               shift and go to state 13
+    main_declaration               shift and go to state 14
+    var_declaration                shift and go to state 15
+    minusminus_expr                shift and go to state 16
+    plusplus_expr                  shift and go to state 17
+
+state 1
+
+    (0) S' -> block .
+
+
+state 2
+
+    (2) block -> statements .
+    (3) statements -> statements . statement
+    (5) statement -> . minusminus_statement
+    (6) statement -> . plusplus_statement
+    (7) statement -> . continue_statement
+    (8) statement -> . break_statement
+    (9) statement -> . return_statement
+    (10) statement -> . switch_statement
+    (11) statement -> . for_statement
+    (12) statement -> . while_statement
+    (13) statement -> . if_statement
+    (14) statement -> . assign_statement
+    (15) statement -> . main_declaration
+    (16) statement -> . var_declaration
+    (18) minusminus_statement -> . minusminus_expr SEMI
+    (17) plusplus_statement -> . plusplus_expr SEMI
+    (19) continue_statement -> . CONTINUE SEMI
+    (20) break_statement -> . BREAK SEMI
+    (21) return_statement -> . RETURN SEMI
+    (22) return_statement -> . RETURN expr SEMI
+    (29) switch_statement -> . SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE
+    (28) for_statement -> . FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE
+    (27) while_statement -> . WHILE LPAREN expr RPAREN LBRACE block RBRACE
+    (23) if_statement -> . IF LPAREN expr RPAREN LBRACE block RBRACE else_statement
+    (37) assign_statement -> . ID ASSIGN expr SEMI
+    (36) main_declaration -> . VOID MAIN LPAREN RPAREN LBRACE block RBRACE
+    (34) var_declaration -> . TYPE ID SEMI
+    (35) var_declaration -> . TYPE ID ASSIGN expr SEMI
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+  ! shift/reduce conflict for CONTINUE resolved as shift
+  ! shift/reduce conflict for BREAK resolved as shift
+  ! shift/reduce conflict for RETURN resolved as shift
+  ! shift/reduce conflict for SWITCH resolved as shift
+  ! shift/reduce conflict for FOR resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for VOID resolved as shift
+  ! shift/reduce conflict for TYPE resolved as shift
+  ! shift/reduce conflict for MINUSMINUS resolved as shift
+  ! shift/reduce conflict for PLUSPLUS resolved as shift
+    $end            reduce using rule 2 (block -> statements .)
+    RBRACE          reduce using rule 2 (block -> statements .)
+    DEFAULT         reduce using rule 2 (block -> statements .)
+    CASE            reduce using rule 2 (block -> statements .)
+    CONTINUE        shift and go to state 18
+    BREAK           shift and go to state 19
+    RETURN          shift and go to state 20
+    SWITCH          shift and go to state 21
+    FOR             shift and go to state 23
+    WHILE           shift and go to state 24
+    IF              shift and go to state 25
+    ID              shift and go to state 22
+    VOID            shift and go to state 26
+    TYPE            shift and go to state 27
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    statement                      shift and go to state 30
+    minusminus_statement           shift and go to state 4
+    plusplus_statement             shift and go to state 5
+    continue_statement             shift and go to state 6
+    break_statement                shift and go to state 7
+    return_statement               shift and go to state 8
+    switch_statement               shift and go to state 9
+    for_statement                  shift and go to state 10
+    while_statement                shift and go to state 11
+    if_statement                   shift and go to state 12
+    assign_statement               shift and go to state 13
+    main_declaration               shift and go to state 14
+    var_declaration                shift and go to state 15
+    minusminus_expr                shift and go to state 16
+    plusplus_expr                  shift and go to state 17
+
+state 3
+
+    (4) statements -> statement .
+    CONTINUE        reduce using rule 4 (statements -> statement .)
+    BREAK           reduce using rule 4 (statements -> statement .)
+    RETURN          reduce using rule 4 (statements -> statement .)
+    SWITCH          reduce using rule 4 (statements -> statement .)
+    FOR             reduce using rule 4 (statements -> statement .)
+    WHILE           reduce using rule 4 (statements -> statement .)
+    IF              reduce using rule 4 (statements -> statement .)
+    ID              reduce using rule 4 (statements -> statement .)
+    VOID            reduce using rule 4 (statements -> statement .)
+    TYPE            reduce using rule 4 (statements -> statement .)
+    MINUSMINUS      reduce using rule 4 (statements -> statement .)
+    PLUSPLUS        reduce using rule 4 (statements -> statement .)
+    $end            reduce using rule 4 (statements -> statement .)
+    RBRACE          reduce using rule 4 (statements -> statement .)
+    DEFAULT         reduce using rule 4 (statements -> statement .)
+    CASE            reduce using rule 4 (statements -> statement .)
+
+
+state 4
+
+    (5) statement -> minusminus_statement .
+    CONTINUE        reduce using rule 5 (statement -> minusminus_statement .)
+    BREAK           reduce using rule 5 (statement -> minusminus_statement .)
+    RETURN          reduce using rule 5 (statement -> minusminus_statement .)
+    SWITCH          reduce using rule 5 (statement -> minusminus_statement .)
+    FOR             reduce using rule 5 (statement -> minusminus_statement .)
+    WHILE           reduce using rule 5 (statement -> minusminus_statement .)
+    IF              reduce using rule 5 (statement -> minusminus_statement .)
+    ID              reduce using rule 5 (statement -> minusminus_statement .)
+    VOID            reduce using rule 5 (statement -> minusminus_statement .)
+    TYPE            reduce using rule 5 (statement -> minusminus_statement .)
+    MINUSMINUS      reduce using rule 5 (statement -> minusminus_statement .)
+    PLUSPLUS        reduce using rule 5 (statement -> minusminus_statement .)
+    $end            reduce using rule 5 (statement -> minusminus_statement .)
+    RBRACE          reduce using rule 5 (statement -> minusminus_statement .)
+    DEFAULT         reduce using rule 5 (statement -> minusminus_statement .)
+    CASE            reduce using rule 5 (statement -> minusminus_statement .)
+
+
+state 5
+
+    (6) statement -> plusplus_statement .
+    CONTINUE        reduce using rule 6 (statement -> plusplus_statement .)
+    BREAK           reduce using rule 6 (statement -> plusplus_statement .)
+    RETURN          reduce using rule 6 (statement -> plusplus_statement .)
+    SWITCH          reduce using rule 6 (statement -> plusplus_statement .)
+    FOR             reduce using rule 6 (statement -> plusplus_statement .)
+    WHILE           reduce using rule 6 (statement -> plusplus_statement .)
+    IF              reduce using rule 6 (statement -> plusplus_statement .)
+    ID              reduce using rule 6 (statement -> plusplus_statement .)
+    VOID            reduce using rule 6 (statement -> plusplus_statement .)
+    TYPE            reduce using rule 6 (statement -> plusplus_statement .)
+    MINUSMINUS      reduce using rule 6 (statement -> plusplus_statement .)
+    PLUSPLUS        reduce using rule 6 (statement -> plusplus_statement .)
+    $end            reduce using rule 6 (statement -> plusplus_statement .)
+    RBRACE          reduce using rule 6 (statement -> plusplus_statement .)
+    DEFAULT         reduce using rule 6 (statement -> plusplus_statement .)
+    CASE            reduce using rule 6 (statement -> plusplus_statement .)
+
+
+state 6
+
+    (7) statement -> continue_statement .
+    CONTINUE        reduce using rule 7 (statement -> continue_statement .)
+    BREAK           reduce using rule 7 (statement -> continue_statement .)
+    RETURN          reduce using rule 7 (statement -> continue_statement .)
+    SWITCH          reduce using rule 7 (statement -> continue_statement .)
+    FOR             reduce using rule 7 (statement -> continue_statement .)
+    WHILE           reduce using rule 7 (statement -> continue_statement .)
+    IF              reduce using rule 7 (statement -> continue_statement .)
+    ID              reduce using rule 7 (statement -> continue_statement .)
+    VOID            reduce using rule 7 (statement -> continue_statement .)
+    TYPE            reduce using rule 7 (statement -> continue_statement .)
+    MINUSMINUS      reduce using rule 7 (statement -> continue_statement .)
+    PLUSPLUS        reduce using rule 7 (statement -> continue_statement .)
+    $end            reduce using rule 7 (statement -> continue_statement .)
+    RBRACE          reduce using rule 7 (statement -> continue_statement .)
+    DEFAULT         reduce using rule 7 (statement -> continue_statement .)
+    CASE            reduce using rule 7 (statement -> continue_statement .)
+
+
+state 7
+
+    (8) statement -> break_statement .
+    CONTINUE        reduce using rule 8 (statement -> break_statement .)
+    BREAK           reduce using rule 8 (statement -> break_statement .)
+    RETURN          reduce using rule 8 (statement -> break_statement .)
+    SWITCH          reduce using rule 8 (statement -> break_statement .)
+    FOR             reduce using rule 8 (statement -> break_statement .)
+    WHILE           reduce using rule 8 (statement -> break_statement .)
+    IF              reduce using rule 8 (statement -> break_statement .)
+    ID              reduce using rule 8 (statement -> break_statement .)
+    VOID            reduce using rule 8 (statement -> break_statement .)
+    TYPE            reduce using rule 8 (statement -> break_statement .)
+    MINUSMINUS      reduce using rule 8 (statement -> break_statement .)
+    PLUSPLUS        reduce using rule 8 (statement -> break_statement .)
+    $end            reduce using rule 8 (statement -> break_statement .)
+    RBRACE          reduce using rule 8 (statement -> break_statement .)
+    DEFAULT         reduce using rule 8 (statement -> break_statement .)
+    CASE            reduce using rule 8 (statement -> break_statement .)
+
+
+state 8
+
+    (9) statement -> return_statement .
+    CONTINUE        reduce using rule 9 (statement -> return_statement .)
+    BREAK           reduce using rule 9 (statement -> return_statement .)
+    RETURN          reduce using rule 9 (statement -> return_statement .)
+    SWITCH          reduce using rule 9 (statement -> return_statement .)
+    FOR             reduce using rule 9 (statement -> return_statement .)
+    WHILE           reduce using rule 9 (statement -> return_statement .)
+    IF              reduce using rule 9 (statement -> return_statement .)
+    ID              reduce using rule 9 (statement -> return_statement .)
+    VOID            reduce using rule 9 (statement -> return_statement .)
+    TYPE            reduce using rule 9 (statement -> return_statement .)
+    MINUSMINUS      reduce using rule 9 (statement -> return_statement .)
+    PLUSPLUS        reduce using rule 9 (statement -> return_statement .)
+    $end            reduce using rule 9 (statement -> return_statement .)
+    RBRACE          reduce using rule 9 (statement -> return_statement .)
+    DEFAULT         reduce using rule 9 (statement -> return_statement .)
+    CASE            reduce using rule 9 (statement -> return_statement .)
+
+
+state 9
+
+    (10) statement -> switch_statement .
+    CONTINUE        reduce using rule 10 (statement -> switch_statement .)
+    BREAK           reduce using rule 10 (statement -> switch_statement .)
+    RETURN          reduce using rule 10 (statement -> switch_statement .)
+    SWITCH          reduce using rule 10 (statement -> switch_statement .)
+    FOR             reduce using rule 10 (statement -> switch_statement .)
+    WHILE           reduce using rule 10 (statement -> switch_statement .)
+    IF              reduce using rule 10 (statement -> switch_statement .)
+    ID              reduce using rule 10 (statement -> switch_statement .)
+    VOID            reduce using rule 10 (statement -> switch_statement .)
+    TYPE            reduce using rule 10 (statement -> switch_statement .)
+    MINUSMINUS      reduce using rule 10 (statement -> switch_statement .)
+    PLUSPLUS        reduce using rule 10 (statement -> switch_statement .)
+    $end            reduce using rule 10 (statement -> switch_statement .)
+    RBRACE          reduce using rule 10 (statement -> switch_statement .)
+    DEFAULT         reduce using rule 10 (statement -> switch_statement .)
+    CASE            reduce using rule 10 (statement -> switch_statement .)
+
+
+state 10
+
+    (11) statement -> for_statement .
+    CONTINUE        reduce using rule 11 (statement -> for_statement .)
+    BREAK           reduce using rule 11 (statement -> for_statement .)
+    RETURN          reduce using rule 11 (statement -> for_statement .)
+    SWITCH          reduce using rule 11 (statement -> for_statement .)
+    FOR             reduce using rule 11 (statement -> for_statement .)
+    WHILE           reduce using rule 11 (statement -> for_statement .)
+    IF              reduce using rule 11 (statement -> for_statement .)
+    ID              reduce using rule 11 (statement -> for_statement .)
+    VOID            reduce using rule 11 (statement -> for_statement .)
+    TYPE            reduce using rule 11 (statement -> for_statement .)
+    MINUSMINUS      reduce using rule 11 (statement -> for_statement .)
+    PLUSPLUS        reduce using rule 11 (statement -> for_statement .)
+    $end            reduce using rule 11 (statement -> for_statement .)
+    RBRACE          reduce using rule 11 (statement -> for_statement .)
+    DEFAULT         reduce using rule 11 (statement -> for_statement .)
+    CASE            reduce using rule 11 (statement -> for_statement .)
+
+
+state 11
+
+    (12) statement -> while_statement .
+    CONTINUE        reduce using rule 12 (statement -> while_statement .)
+    BREAK           reduce using rule 12 (statement -> while_statement .)
+    RETURN          reduce using rule 12 (statement -> while_statement .)
+    SWITCH          reduce using rule 12 (statement -> while_statement .)
+    FOR             reduce using rule 12 (statement -> while_statement .)
+    WHILE           reduce using rule 12 (statement -> while_statement .)
+    IF              reduce using rule 12 (statement -> while_statement .)
+    ID              reduce using rule 12 (statement -> while_statement .)
+    VOID            reduce using rule 12 (statement -> while_statement .)
+    TYPE            reduce using rule 12 (statement -> while_statement .)
+    MINUSMINUS      reduce using rule 12 (statement -> while_statement .)
+    PLUSPLUS        reduce using rule 12 (statement -> while_statement .)
+    $end            reduce using rule 12 (statement -> while_statement .)
+    RBRACE          reduce using rule 12 (statement -> while_statement .)
+    DEFAULT         reduce using rule 12 (statement -> while_statement .)
+    CASE            reduce using rule 12 (statement -> while_statement .)
+
+
+state 12
+
+    (13) statement -> if_statement .
+    CONTINUE        reduce using rule 13 (statement -> if_statement .)
+    BREAK           reduce using rule 13 (statement -> if_statement .)
+    RETURN          reduce using rule 13 (statement -> if_statement .)
+    SWITCH          reduce using rule 13 (statement -> if_statement .)
+    FOR             reduce using rule 13 (statement -> if_statement .)
+    WHILE           reduce using rule 13 (statement -> if_statement .)
+    IF              reduce using rule 13 (statement -> if_statement .)
+    ID              reduce using rule 13 (statement -> if_statement .)
+    VOID            reduce using rule 13 (statement -> if_statement .)
+    TYPE            reduce using rule 13 (statement -> if_statement .)
+    MINUSMINUS      reduce using rule 13 (statement -> if_statement .)
+    PLUSPLUS        reduce using rule 13 (statement -> if_statement .)
+    $end            reduce using rule 13 (statement -> if_statement .)
+    RBRACE          reduce using rule 13 (statement -> if_statement .)
+    DEFAULT         reduce using rule 13 (statement -> if_statement .)
+    CASE            reduce using rule 13 (statement -> if_statement .)
+
+
+state 13
+
+    (14) statement -> assign_statement .
+    CONTINUE        reduce using rule 14 (statement -> assign_statement .)
+    BREAK           reduce using rule 14 (statement -> assign_statement .)
+    RETURN          reduce using rule 14 (statement -> assign_statement .)
+    SWITCH          reduce using rule 14 (statement -> assign_statement .)
+    FOR             reduce using rule 14 (statement -> assign_statement .)
+    WHILE           reduce using rule 14 (statement -> assign_statement .)
+    IF              reduce using rule 14 (statement -> assign_statement .)
+    ID              reduce using rule 14 (statement -> assign_statement .)
+    VOID            reduce using rule 14 (statement -> assign_statement .)
+    TYPE            reduce using rule 14 (statement -> assign_statement .)
+    MINUSMINUS      reduce using rule 14 (statement -> assign_statement .)
+    PLUSPLUS        reduce using rule 14 (statement -> assign_statement .)
+    $end            reduce using rule 14 (statement -> assign_statement .)
+    RBRACE          reduce using rule 14 (statement -> assign_statement .)
+    DEFAULT         reduce using rule 14 (statement -> assign_statement .)
+    CASE            reduce using rule 14 (statement -> assign_statement .)
+
+
+state 14
+
+    (15) statement -> main_declaration .
+    CONTINUE        reduce using rule 15 (statement -> main_declaration .)
+    BREAK           reduce using rule 15 (statement -> main_declaration .)
+    RETURN          reduce using rule 15 (statement -> main_declaration .)
+    SWITCH          reduce using rule 15 (statement -> main_declaration .)
+    FOR             reduce using rule 15 (statement -> main_declaration .)
+    WHILE           reduce using rule 15 (statement -> main_declaration .)
+    IF              reduce using rule 15 (statement -> main_declaration .)
+    ID              reduce using rule 15 (statement -> main_declaration .)
+    VOID            reduce using rule 15 (statement -> main_declaration .)
+    TYPE            reduce using rule 15 (statement -> main_declaration .)
+    MINUSMINUS      reduce using rule 15 (statement -> main_declaration .)
+    PLUSPLUS        reduce using rule 15 (statement -> main_declaration .)
+    $end            reduce using rule 15 (statement -> main_declaration .)
+    RBRACE          reduce using rule 15 (statement -> main_declaration .)
+    DEFAULT         reduce using rule 15 (statement -> main_declaration .)
+    CASE            reduce using rule 15 (statement -> main_declaration .)
+
+
+state 15
+
+    (16) statement -> var_declaration .
+    CONTINUE        reduce using rule 16 (statement -> var_declaration .)
+    BREAK           reduce using rule 16 (statement -> var_declaration .)
+    RETURN          reduce using rule 16 (statement -> var_declaration .)
+    SWITCH          reduce using rule 16 (statement -> var_declaration .)
+    FOR             reduce using rule 16 (statement -> var_declaration .)
+    WHILE           reduce using rule 16 (statement -> var_declaration .)
+    IF              reduce using rule 16 (statement -> var_declaration .)
+    ID              reduce using rule 16 (statement -> var_declaration .)
+    VOID            reduce using rule 16 (statement -> var_declaration .)
+    TYPE            reduce using rule 16 (statement -> var_declaration .)
+    MINUSMINUS      reduce using rule 16 (statement -> var_declaration .)
+    PLUSPLUS        reduce using rule 16 (statement -> var_declaration .)
+    $end            reduce using rule 16 (statement -> var_declaration .)
+    RBRACE          reduce using rule 16 (statement -> var_declaration .)
+    DEFAULT         reduce using rule 16 (statement -> var_declaration .)
+    CASE            reduce using rule 16 (statement -> var_declaration .)
+
+
+state 16
+
+    (18) minusminus_statement -> minusminus_expr . SEMI
+    SEMI            shift and go to state 31
+
+
+state 17
+
+    (17) plusplus_statement -> plusplus_expr . SEMI
+    SEMI            shift and go to state 32
+
+
+state 18
+
+    (19) continue_statement -> CONTINUE . SEMI
+    SEMI            shift and go to state 33
+
+
+state 19
+
+    (20) break_statement -> BREAK . SEMI
+    SEMI            shift and go to state 34
+
+
+state 20
+
+    (21) return_statement -> RETURN . SEMI
+    (22) return_statement -> RETURN . expr SEMI
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    SEMI            shift and go to state 35
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 36
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 21
+
+    (29) switch_statement -> SWITCH . LPAREN ID RPAREN LBRACE switch_block RBRACE
+    LPAREN          shift and go to state 48
+
+
+state 22
+
+    (37) assign_statement -> ID . ASSIGN expr SEMI
+    (60) minusminus_expr -> ID . MINUSMINUS
+    (58) plusplus_expr -> ID . PLUSPLUS
+    ASSIGN          shift and go to state 49
+    MINUSMINUS      shift and go to state 50
+    PLUSPLUS        shift and go to state 51
+
+
+state 23
+
+    (28) for_statement -> FOR . LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE
+    LPAREN          shift and go to state 52
+
+
+state 24
+
+    (27) while_statement -> WHILE . LPAREN expr RPAREN LBRACE block RBRACE
+    LPAREN          shift and go to state 53
+
+
+state 25
+
+    (23) if_statement -> IF . LPAREN expr RPAREN LBRACE block RBRACE else_statement
+    LPAREN          shift and go to state 54
+
+
+state 26
+
+    (36) main_declaration -> VOID . MAIN LPAREN RPAREN LBRACE block RBRACE
+    MAIN            shift and go to state 55
+
+
+state 27
+
+    (34) var_declaration -> TYPE . ID SEMI
+    (35) var_declaration -> TYPE . ID ASSIGN expr SEMI
+    ID              shift and go to state 56
+
+
+state 28
+
+    (59) minusminus_expr -> MINUSMINUS . ID
+    ID              shift and go to state 57
+
+
+state 29
+
+    (57) plusplus_expr -> PLUSPLUS . ID
+    ID              shift and go to state 58
+
+
+state 30
+
+    (3) statements -> statements statement .
+    CONTINUE        reduce using rule 3 (statements -> statements statement .)
+    BREAK           reduce using rule 3 (statements -> statements statement .)
+    RETURN          reduce using rule 3 (statements -> statements statement .)
+    SWITCH          reduce using rule 3 (statements -> statements statement .)
+    FOR             reduce using rule 3 (statements -> statements statement .)
+    WHILE           reduce using rule 3 (statements -> statements statement .)
+    IF              reduce using rule 3 (statements -> statements statement .)
+    ID              reduce using rule 3 (statements -> statements statement .)
+    VOID            reduce using rule 3 (statements -> statements statement .)
+    TYPE            reduce using rule 3 (statements -> statements statement .)
+    MINUSMINUS      reduce using rule 3 (statements -> statements statement .)
+    PLUSPLUS        reduce using rule 3 (statements -> statements statement .)
+    $end            reduce using rule 3 (statements -> statements statement .)
+    RBRACE          reduce using rule 3 (statements -> statements statement .)
+    DEFAULT         reduce using rule 3 (statements -> statements statement .)
+    CASE            reduce using rule 3 (statements -> statements statement .)
+
+
+state 31
+
+    (18) minusminus_statement -> minusminus_expr SEMI .
+    CONTINUE        reduce using rule 18 (minusminus_statement -> minusminus_expr SEMI .)
+    BREAK           reduce using rule 18 (minusminus_statement -> minusminus_expr SEMI .)
+    RETURN          reduce using rule 18 (minusminus_statement -> minusminus_expr SEMI .)
+    SWITCH          reduce using rule 18 (minusminus_statement -> minusminus_expr SEMI .)
+    FOR             reduce using rule 18 (minusminus_statement -> minusminus_expr SEMI .)
+    WHILE           reduce using rule 18 (minusminus_statement -> minusminus_expr SEMI .)
+    IF              reduce using rule 18 (minusminus_statement -> minusminus_expr SEMI .)
+    ID              reduce using rule 18 (minusminus_statement -> minusminus_expr SEMI .)
+    VOID            reduce using rule 18 (minusminus_statement -> minusminus_expr SEMI .)
+    TYPE            reduce using rule 18 (minusminus_statement -> minusminus_expr SEMI .)
+    MINUSMINUS      reduce using rule 18 (minusminus_statement -> minusminus_expr SEMI .)
+    PLUSPLUS        reduce using rule 18 (minusminus_statement -> minusminus_expr SEMI .)
+    $end            reduce using rule 18 (minusminus_statement -> minusminus_expr SEMI .)
+    RBRACE          reduce using rule 18 (minusminus_statement -> minusminus_expr SEMI .)
+    DEFAULT         reduce using rule 18 (minusminus_statement -> minusminus_expr SEMI .)
+    CASE            reduce using rule 18 (minusminus_statement -> minusminus_expr SEMI .)
+
+
+state 32
+
+    (17) plusplus_statement -> plusplus_expr SEMI .
+    CONTINUE        reduce using rule 17 (plusplus_statement -> plusplus_expr SEMI .)
+    BREAK           reduce using rule 17 (plusplus_statement -> plusplus_expr SEMI .)
+    RETURN          reduce using rule 17 (plusplus_statement -> plusplus_expr SEMI .)
+    SWITCH          reduce using rule 17 (plusplus_statement -> plusplus_expr SEMI .)
+    FOR             reduce using rule 17 (plusplus_statement -> plusplus_expr SEMI .)
+    WHILE           reduce using rule 17 (plusplus_statement -> plusplus_expr SEMI .)
+    IF              reduce using rule 17 (plusplus_statement -> plusplus_expr SEMI .)
+    ID              reduce using rule 17 (plusplus_statement -> plusplus_expr SEMI .)
+    VOID            reduce using rule 17 (plusplus_statement -> plusplus_expr SEMI .)
+    TYPE            reduce using rule 17 (plusplus_statement -> plusplus_expr SEMI .)
+    MINUSMINUS      reduce using rule 17 (plusplus_statement -> plusplus_expr SEMI .)
+    PLUSPLUS        reduce using rule 17 (plusplus_statement -> plusplus_expr SEMI .)
+    $end            reduce using rule 17 (plusplus_statement -> plusplus_expr SEMI .)
+    RBRACE          reduce using rule 17 (plusplus_statement -> plusplus_expr SEMI .)
+    DEFAULT         reduce using rule 17 (plusplus_statement -> plusplus_expr SEMI .)
+    CASE            reduce using rule 17 (plusplus_statement -> plusplus_expr SEMI .)
+
+
+state 33
+
+    (19) continue_statement -> CONTINUE SEMI .
+    CONTINUE        reduce using rule 19 (continue_statement -> CONTINUE SEMI .)
+    BREAK           reduce using rule 19 (continue_statement -> CONTINUE SEMI .)
+    RETURN          reduce using rule 19 (continue_statement -> CONTINUE SEMI .)
+    SWITCH          reduce using rule 19 (continue_statement -> CONTINUE SEMI .)
+    FOR             reduce using rule 19 (continue_statement -> CONTINUE SEMI .)
+    WHILE           reduce using rule 19 (continue_statement -> CONTINUE SEMI .)
+    IF              reduce using rule 19 (continue_statement -> CONTINUE SEMI .)
+    ID              reduce using rule 19 (continue_statement -> CONTINUE SEMI .)
+    VOID            reduce using rule 19 (continue_statement -> CONTINUE SEMI .)
+    TYPE            reduce using rule 19 (continue_statement -> CONTINUE SEMI .)
+    MINUSMINUS      reduce using rule 19 (continue_statement -> CONTINUE SEMI .)
+    PLUSPLUS        reduce using rule 19 (continue_statement -> CONTINUE SEMI .)
+    $end            reduce using rule 19 (continue_statement -> CONTINUE SEMI .)
+    RBRACE          reduce using rule 19 (continue_statement -> CONTINUE SEMI .)
+    DEFAULT         reduce using rule 19 (continue_statement -> CONTINUE SEMI .)
+    CASE            reduce using rule 19 (continue_statement -> CONTINUE SEMI .)
+
+
+state 34
+
+    (20) break_statement -> BREAK SEMI .
+    CONTINUE        reduce using rule 20 (break_statement -> BREAK SEMI .)
+    BREAK           reduce using rule 20 (break_statement -> BREAK SEMI .)
+    RETURN          reduce using rule 20 (break_statement -> BREAK SEMI .)
+    SWITCH          reduce using rule 20 (break_statement -> BREAK SEMI .)
+    FOR             reduce using rule 20 (break_statement -> BREAK SEMI .)
+    WHILE           reduce using rule 20 (break_statement -> BREAK SEMI .)
+    IF              reduce using rule 20 (break_statement -> BREAK SEMI .)
+    ID              reduce using rule 20 (break_statement -> BREAK SEMI .)
+    VOID            reduce using rule 20 (break_statement -> BREAK SEMI .)
+    TYPE            reduce using rule 20 (break_statement -> BREAK SEMI .)
+    MINUSMINUS      reduce using rule 20 (break_statement -> BREAK SEMI .)
+    PLUSPLUS        reduce using rule 20 (break_statement -> BREAK SEMI .)
+    $end            reduce using rule 20 (break_statement -> BREAK SEMI .)
+    RBRACE          reduce using rule 20 (break_statement -> BREAK SEMI .)
+    DEFAULT         reduce using rule 20 (break_statement -> BREAK SEMI .)
+    CASE            reduce using rule 20 (break_statement -> BREAK SEMI .)
+
+
+state 35
+
+    (21) return_statement -> RETURN SEMI .
+    CONTINUE        reduce using rule 21 (return_statement -> RETURN SEMI .)
+    BREAK           reduce using rule 21 (return_statement -> RETURN SEMI .)
+    RETURN          reduce using rule 21 (return_statement -> RETURN SEMI .)
+    SWITCH          reduce using rule 21 (return_statement -> RETURN SEMI .)
+    FOR             reduce using rule 21 (return_statement -> RETURN SEMI .)
+    WHILE           reduce using rule 21 (return_statement -> RETURN SEMI .)
+    IF              reduce using rule 21 (return_statement -> RETURN SEMI .)
+    ID              reduce using rule 21 (return_statement -> RETURN SEMI .)
+    VOID            reduce using rule 21 (return_statement -> RETURN SEMI .)
+    TYPE            reduce using rule 21 (return_statement -> RETURN SEMI .)
+    MINUSMINUS      reduce using rule 21 (return_statement -> RETURN SEMI .)
+    PLUSPLUS        reduce using rule 21 (return_statement -> RETURN SEMI .)
+    $end            reduce using rule 21 (return_statement -> RETURN SEMI .)
+    RBRACE          reduce using rule 21 (return_statement -> RETURN SEMI .)
+    DEFAULT         reduce using rule 21 (return_statement -> RETURN SEMI .)
+    CASE            reduce using rule 21 (return_statement -> RETURN SEMI .)
+
+
+state 36
+
+    (22) return_statement -> RETURN expr . SEMI
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+    SEMI            shift and go to state 59
+    OR              shift and go to state 60
+    AND             shift and go to state 61
+    NEQUAL          shift and go to state 62
+    EQUAL           shift and go to state 63
+    GEQUAL          shift and go to state 64
+    GREATERT        shift and go to state 65
+    LEQUAL          shift and go to state 66
+    LESST           shift and go to state 67
+    MOD             shift and go to state 68
+    DIVIDE          shift and go to state 69
+    TIMES           shift and go to state 70
+    MINUS           shift and go to state 71
+    PLUS            shift and go to state 72
+
+
+state 37
+
+    (38) expr -> literal .
+    SEMI            reduce using rule 38 (expr -> literal .)
+    OR              reduce using rule 38 (expr -> literal .)
+    AND             reduce using rule 38 (expr -> literal .)
+    NEQUAL          reduce using rule 38 (expr -> literal .)
+    EQUAL           reduce using rule 38 (expr -> literal .)
+    GEQUAL          reduce using rule 38 (expr -> literal .)
+    GREATERT        reduce using rule 38 (expr -> literal .)
+    LEQUAL          reduce using rule 38 (expr -> literal .)
+    LESST           reduce using rule 38 (expr -> literal .)
+    MOD             reduce using rule 38 (expr -> literal .)
+    DIVIDE          reduce using rule 38 (expr -> literal .)
+    TIMES           reduce using rule 38 (expr -> literal .)
+    MINUS           reduce using rule 38 (expr -> literal .)
+    PLUS            reduce using rule 38 (expr -> literal .)
+    RPAREN          reduce using rule 38 (expr -> literal .)
+
+
+state 38
+
+    (39) expr -> ID .
+    (60) minusminus_expr -> ID . MINUSMINUS
+    (58) plusplus_expr -> ID . PLUSPLUS
+    SEMI            reduce using rule 39 (expr -> ID .)
+    OR              reduce using rule 39 (expr -> ID .)
+    AND             reduce using rule 39 (expr -> ID .)
+    NEQUAL          reduce using rule 39 (expr -> ID .)
+    EQUAL           reduce using rule 39 (expr -> ID .)
+    GEQUAL          reduce using rule 39 (expr -> ID .)
+    GREATERT        reduce using rule 39 (expr -> ID .)
+    LEQUAL          reduce using rule 39 (expr -> ID .)
+    LESST           reduce using rule 39 (expr -> ID .)
+    MOD             reduce using rule 39 (expr -> ID .)
+    DIVIDE          reduce using rule 39 (expr -> ID .)
+    TIMES           reduce using rule 39 (expr -> ID .)
+    MINUS           reduce using rule 39 (expr -> ID .)
+    PLUS            reduce using rule 39 (expr -> ID .)
+    RPAREN          reduce using rule 39 (expr -> ID .)
+    MINUSMINUS      shift and go to state 50
+    PLUSPLUS        shift and go to state 51
+
+
+state 39
+
+    (40) expr -> minusminus_expr .
+    SEMI            reduce using rule 40 (expr -> minusminus_expr .)
+    OR              reduce using rule 40 (expr -> minusminus_expr .)
+    AND             reduce using rule 40 (expr -> minusminus_expr .)
+    NEQUAL          reduce using rule 40 (expr -> minusminus_expr .)
+    EQUAL           reduce using rule 40 (expr -> minusminus_expr .)
+    GEQUAL          reduce using rule 40 (expr -> minusminus_expr .)
+    GREATERT        reduce using rule 40 (expr -> minusminus_expr .)
+    LEQUAL          reduce using rule 40 (expr -> minusminus_expr .)
+    LESST           reduce using rule 40 (expr -> minusminus_expr .)
+    MOD             reduce using rule 40 (expr -> minusminus_expr .)
+    DIVIDE          reduce using rule 40 (expr -> minusminus_expr .)
+    TIMES           reduce using rule 40 (expr -> minusminus_expr .)
+    MINUS           reduce using rule 40 (expr -> minusminus_expr .)
+    PLUS            reduce using rule 40 (expr -> minusminus_expr .)
+    RPAREN          reduce using rule 40 (expr -> minusminus_expr .)
+
+
+state 40
+
+    (41) expr -> plusplus_expr .
+    SEMI            reduce using rule 41 (expr -> plusplus_expr .)
+    OR              reduce using rule 41 (expr -> plusplus_expr .)
+    AND             reduce using rule 41 (expr -> plusplus_expr .)
+    NEQUAL          reduce using rule 41 (expr -> plusplus_expr .)
+    EQUAL           reduce using rule 41 (expr -> plusplus_expr .)
+    GEQUAL          reduce using rule 41 (expr -> plusplus_expr .)
+    GREATERT        reduce using rule 41 (expr -> plusplus_expr .)
+    LEQUAL          reduce using rule 41 (expr -> plusplus_expr .)
+    LESST           reduce using rule 41 (expr -> plusplus_expr .)
+    MOD             reduce using rule 41 (expr -> plusplus_expr .)
+    DIVIDE          reduce using rule 41 (expr -> plusplus_expr .)
+    TIMES           reduce using rule 41 (expr -> plusplus_expr .)
+    MINUS           reduce using rule 41 (expr -> plusplus_expr .)
+    PLUS            reduce using rule 41 (expr -> plusplus_expr .)
+    RPAREN          reduce using rule 41 (expr -> plusplus_expr .)
+
+
+state 41
+
+    (42) expr -> LPAREN . expr RPAREN
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 73
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 42
+
+    (43) expr -> NOT . expr
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 74
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 43
+
+    (61) literal -> BOOLEAN .
+    SEMI            reduce using rule 61 (literal -> BOOLEAN .)
+    OR              reduce using rule 61 (literal -> BOOLEAN .)
+    AND             reduce using rule 61 (literal -> BOOLEAN .)
+    NEQUAL          reduce using rule 61 (literal -> BOOLEAN .)
+    EQUAL           reduce using rule 61 (literal -> BOOLEAN .)
+    GEQUAL          reduce using rule 61 (literal -> BOOLEAN .)
+    GREATERT        reduce using rule 61 (literal -> BOOLEAN .)
+    LEQUAL          reduce using rule 61 (literal -> BOOLEAN .)
+    LESST           reduce using rule 61 (literal -> BOOLEAN .)
+    MOD             reduce using rule 61 (literal -> BOOLEAN .)
+    DIVIDE          reduce using rule 61 (literal -> BOOLEAN .)
+    TIMES           reduce using rule 61 (literal -> BOOLEAN .)
+    MINUS           reduce using rule 61 (literal -> BOOLEAN .)
+    PLUS            reduce using rule 61 (literal -> BOOLEAN .)
+    RPAREN          reduce using rule 61 (literal -> BOOLEAN .)
+    COL             reduce using rule 61 (literal -> BOOLEAN .)
+
+
+state 44
+
+    (62) literal -> STRING .
+    SEMI            reduce using rule 62 (literal -> STRING .)
+    OR              reduce using rule 62 (literal -> STRING .)
+    AND             reduce using rule 62 (literal -> STRING .)
+    NEQUAL          reduce using rule 62 (literal -> STRING .)
+    EQUAL           reduce using rule 62 (literal -> STRING .)
+    GEQUAL          reduce using rule 62 (literal -> STRING .)
+    GREATERT        reduce using rule 62 (literal -> STRING .)
+    LEQUAL          reduce using rule 62 (literal -> STRING .)
+    LESST           reduce using rule 62 (literal -> STRING .)
+    MOD             reduce using rule 62 (literal -> STRING .)
+    DIVIDE          reduce using rule 62 (literal -> STRING .)
+    TIMES           reduce using rule 62 (literal -> STRING .)
+    MINUS           reduce using rule 62 (literal -> STRING .)
+    PLUS            reduce using rule 62 (literal -> STRING .)
+    RPAREN          reduce using rule 62 (literal -> STRING .)
+    COL             reduce using rule 62 (literal -> STRING .)
+
+
+state 45
+
+    (63) literal -> CHAR .
+    SEMI            reduce using rule 63 (literal -> CHAR .)
+    OR              reduce using rule 63 (literal -> CHAR .)
+    AND             reduce using rule 63 (literal -> CHAR .)
+    NEQUAL          reduce using rule 63 (literal -> CHAR .)
+    EQUAL           reduce using rule 63 (literal -> CHAR .)
+    GEQUAL          reduce using rule 63 (literal -> CHAR .)
+    GREATERT        reduce using rule 63 (literal -> CHAR .)
+    LEQUAL          reduce using rule 63 (literal -> CHAR .)
+    LESST           reduce using rule 63 (literal -> CHAR .)
+    MOD             reduce using rule 63 (literal -> CHAR .)
+    DIVIDE          reduce using rule 63 (literal -> CHAR .)
+    TIMES           reduce using rule 63 (literal -> CHAR .)
+    MINUS           reduce using rule 63 (literal -> CHAR .)
+    PLUS            reduce using rule 63 (literal -> CHAR .)
+    RPAREN          reduce using rule 63 (literal -> CHAR .)
+    COL             reduce using rule 63 (literal -> CHAR .)
+
+
+state 46
+
+    (64) literal -> FLOAT .
+    SEMI            reduce using rule 64 (literal -> FLOAT .)
+    OR              reduce using rule 64 (literal -> FLOAT .)
+    AND             reduce using rule 64 (literal -> FLOAT .)
+    NEQUAL          reduce using rule 64 (literal -> FLOAT .)
+    EQUAL           reduce using rule 64 (literal -> FLOAT .)
+    GEQUAL          reduce using rule 64 (literal -> FLOAT .)
+    GREATERT        reduce using rule 64 (literal -> FLOAT .)
+    LEQUAL          reduce using rule 64 (literal -> FLOAT .)
+    LESST           reduce using rule 64 (literal -> FLOAT .)
+    MOD             reduce using rule 64 (literal -> FLOAT .)
+    DIVIDE          reduce using rule 64 (literal -> FLOAT .)
+    TIMES           reduce using rule 64 (literal -> FLOAT .)
+    MINUS           reduce using rule 64 (literal -> FLOAT .)
+    PLUS            reduce using rule 64 (literal -> FLOAT .)
+    RPAREN          reduce using rule 64 (literal -> FLOAT .)
+    COL             reduce using rule 64 (literal -> FLOAT .)
+
+
+state 47
+
+    (65) literal -> INTEGER .
+    SEMI            reduce using rule 65 (literal -> INTEGER .)
+    OR              reduce using rule 65 (literal -> INTEGER .)
+    AND             reduce using rule 65 (literal -> INTEGER .)
+    NEQUAL          reduce using rule 65 (literal -> INTEGER .)
+    EQUAL           reduce using rule 65 (literal -> INTEGER .)
+    GEQUAL          reduce using rule 65 (literal -> INTEGER .)
+    GREATERT        reduce using rule 65 (literal -> INTEGER .)
+    LEQUAL          reduce using rule 65 (literal -> INTEGER .)
+    LESST           reduce using rule 65 (literal -> INTEGER .)
+    MOD             reduce using rule 65 (literal -> INTEGER .)
+    DIVIDE          reduce using rule 65 (literal -> INTEGER .)
+    TIMES           reduce using rule 65 (literal -> INTEGER .)
+    MINUS           reduce using rule 65 (literal -> INTEGER .)
+    PLUS            reduce using rule 65 (literal -> INTEGER .)
+    RPAREN          reduce using rule 65 (literal -> INTEGER .)
+    COL             reduce using rule 65 (literal -> INTEGER .)
+
+
+state 48
+
+    (29) switch_statement -> SWITCH LPAREN . ID RPAREN LBRACE switch_block RBRACE
+    ID              shift and go to state 75
+
+
+state 49
+
+    (37) assign_statement -> ID ASSIGN . expr SEMI
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 76
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 50
+
+    (60) minusminus_expr -> ID MINUSMINUS .
+    SEMI            reduce using rule 60 (minusminus_expr -> ID MINUSMINUS .)
+    OR              reduce using rule 60 (minusminus_expr -> ID MINUSMINUS .)
+    AND             reduce using rule 60 (minusminus_expr -> ID MINUSMINUS .)
+    NEQUAL          reduce using rule 60 (minusminus_expr -> ID MINUSMINUS .)
+    EQUAL           reduce using rule 60 (minusminus_expr -> ID MINUSMINUS .)
+    GEQUAL          reduce using rule 60 (minusminus_expr -> ID MINUSMINUS .)
+    GREATERT        reduce using rule 60 (minusminus_expr -> ID MINUSMINUS .)
+    LEQUAL          reduce using rule 60 (minusminus_expr -> ID MINUSMINUS .)
+    LESST           reduce using rule 60 (minusminus_expr -> ID MINUSMINUS .)
+    MOD             reduce using rule 60 (minusminus_expr -> ID MINUSMINUS .)
+    DIVIDE          reduce using rule 60 (minusminus_expr -> ID MINUSMINUS .)
+    TIMES           reduce using rule 60 (minusminus_expr -> ID MINUSMINUS .)
+    MINUS           reduce using rule 60 (minusminus_expr -> ID MINUSMINUS .)
+    PLUS            reduce using rule 60 (minusminus_expr -> ID MINUSMINUS .)
+    RPAREN          reduce using rule 60 (minusminus_expr -> ID MINUSMINUS .)
+
+
+state 51
+
+    (58) plusplus_expr -> ID PLUSPLUS .
+    SEMI            reduce using rule 58 (plusplus_expr -> ID PLUSPLUS .)
+    OR              reduce using rule 58 (plusplus_expr -> ID PLUSPLUS .)
+    AND             reduce using rule 58 (plusplus_expr -> ID PLUSPLUS .)
+    NEQUAL          reduce using rule 58 (plusplus_expr -> ID PLUSPLUS .)
+    EQUAL           reduce using rule 58 (plusplus_expr -> ID PLUSPLUS .)
+    GEQUAL          reduce using rule 58 (plusplus_expr -> ID PLUSPLUS .)
+    GREATERT        reduce using rule 58 (plusplus_expr -> ID PLUSPLUS .)
+    LEQUAL          reduce using rule 58 (plusplus_expr -> ID PLUSPLUS .)
+    LESST           reduce using rule 58 (plusplus_expr -> ID PLUSPLUS .)
+    MOD             reduce using rule 58 (plusplus_expr -> ID PLUSPLUS .)
+    DIVIDE          reduce using rule 58 (plusplus_expr -> ID PLUSPLUS .)
+    TIMES           reduce using rule 58 (plusplus_expr -> ID PLUSPLUS .)
+    MINUS           reduce using rule 58 (plusplus_expr -> ID PLUSPLUS .)
+    PLUS            reduce using rule 58 (plusplus_expr -> ID PLUSPLUS .)
+    RPAREN          reduce using rule 58 (plusplus_expr -> ID PLUSPLUS .)
+
+
+state 52
+
+    (28) for_statement -> FOR LPAREN . var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE
+    (34) var_declaration -> . TYPE ID SEMI
+    (35) var_declaration -> . TYPE ID ASSIGN expr SEMI
+    TYPE            shift and go to state 27
+
+    var_declaration                shift and go to state 77
+
+state 53
+
+    (27) while_statement -> WHILE LPAREN . expr RPAREN LBRACE block RBRACE
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 78
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 54
+
+    (23) if_statement -> IF LPAREN . expr RPAREN LBRACE block RBRACE else_statement
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 79
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 55
+
+    (36) main_declaration -> VOID MAIN . LPAREN RPAREN LBRACE block RBRACE
+    LPAREN          shift and go to state 80
+
+
+state 56
+
+    (34) var_declaration -> TYPE ID . SEMI
+    (35) var_declaration -> TYPE ID . ASSIGN expr SEMI
+    SEMI            shift and go to state 81
+    ASSIGN          shift and go to state 82
+
+
+state 57
+
+    (59) minusminus_expr -> MINUSMINUS ID .
+    SEMI            reduce using rule 59 (minusminus_expr -> MINUSMINUS ID .)
+    OR              reduce using rule 59 (minusminus_expr -> MINUSMINUS ID .)
+    AND             reduce using rule 59 (minusminus_expr -> MINUSMINUS ID .)
+    NEQUAL          reduce using rule 59 (minusminus_expr -> MINUSMINUS ID .)
+    EQUAL           reduce using rule 59 (minusminus_expr -> MINUSMINUS ID .)
+    GEQUAL          reduce using rule 59 (minusminus_expr -> MINUSMINUS ID .)
+    GREATERT        reduce using rule 59 (minusminus_expr -> MINUSMINUS ID .)
+    LEQUAL          reduce using rule 59 (minusminus_expr -> MINUSMINUS ID .)
+    LESST           reduce using rule 59 (minusminus_expr -> MINUSMINUS ID .)
+    MOD             reduce using rule 59 (minusminus_expr -> MINUSMINUS ID .)
+    DIVIDE          reduce using rule 59 (minusminus_expr -> MINUSMINUS ID .)
+    TIMES           reduce using rule 59 (minusminus_expr -> MINUSMINUS ID .)
+    MINUS           reduce using rule 59 (minusminus_expr -> MINUSMINUS ID .)
+    PLUS            reduce using rule 59 (minusminus_expr -> MINUSMINUS ID .)
+    RPAREN          reduce using rule 59 (minusminus_expr -> MINUSMINUS ID .)
+
+
+state 58
+
+    (57) plusplus_expr -> PLUSPLUS ID .
+    SEMI            reduce using rule 57 (plusplus_expr -> PLUSPLUS ID .)
+    OR              reduce using rule 57 (plusplus_expr -> PLUSPLUS ID .)
+    AND             reduce using rule 57 (plusplus_expr -> PLUSPLUS ID .)
+    NEQUAL          reduce using rule 57 (plusplus_expr -> PLUSPLUS ID .)
+    EQUAL           reduce using rule 57 (plusplus_expr -> PLUSPLUS ID .)
+    GEQUAL          reduce using rule 57 (plusplus_expr -> PLUSPLUS ID .)
+    GREATERT        reduce using rule 57 (plusplus_expr -> PLUSPLUS ID .)
+    LEQUAL          reduce using rule 57 (plusplus_expr -> PLUSPLUS ID .)
+    LESST           reduce using rule 57 (plusplus_expr -> PLUSPLUS ID .)
+    MOD             reduce using rule 57 (plusplus_expr -> PLUSPLUS ID .)
+    DIVIDE          reduce using rule 57 (plusplus_expr -> PLUSPLUS ID .)
+    TIMES           reduce using rule 57 (plusplus_expr -> PLUSPLUS ID .)
+    MINUS           reduce using rule 57 (plusplus_expr -> PLUSPLUS ID .)
+    PLUS            reduce using rule 57 (plusplus_expr -> PLUSPLUS ID .)
+    RPAREN          reduce using rule 57 (plusplus_expr -> PLUSPLUS ID .)
+
+
+state 59
+
+    (22) return_statement -> RETURN expr SEMI .
+    CONTINUE        reduce using rule 22 (return_statement -> RETURN expr SEMI .)
+    BREAK           reduce using rule 22 (return_statement -> RETURN expr SEMI .)
+    RETURN          reduce using rule 22 (return_statement -> RETURN expr SEMI .)
+    SWITCH          reduce using rule 22 (return_statement -> RETURN expr SEMI .)
+    FOR             reduce using rule 22 (return_statement -> RETURN expr SEMI .)
+    WHILE           reduce using rule 22 (return_statement -> RETURN expr SEMI .)
+    IF              reduce using rule 22 (return_statement -> RETURN expr SEMI .)
+    ID              reduce using rule 22 (return_statement -> RETURN expr SEMI .)
+    VOID            reduce using rule 22 (return_statement -> RETURN expr SEMI .)
+    TYPE            reduce using rule 22 (return_statement -> RETURN expr SEMI .)
+    MINUSMINUS      reduce using rule 22 (return_statement -> RETURN expr SEMI .)
+    PLUSPLUS        reduce using rule 22 (return_statement -> RETURN expr SEMI .)
+    $end            reduce using rule 22 (return_statement -> RETURN expr SEMI .)
+    RBRACE          reduce using rule 22 (return_statement -> RETURN expr SEMI .)
+    DEFAULT         reduce using rule 22 (return_statement -> RETURN expr SEMI .)
+    CASE            reduce using rule 22 (return_statement -> RETURN expr SEMI .)
+
+
+state 60
+
+    (44) expr -> expr OR . expr
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 83
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 61
+
+    (45) expr -> expr AND . expr
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 84
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 62
+
+    (46) expr -> expr NEQUAL . expr
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 85
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 63
+
+    (47) expr -> expr EQUAL . expr
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 86
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 64
+
+    (48) expr -> expr GEQUAL . expr
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 87
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 65
+
+    (49) expr -> expr GREATERT . expr
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 88
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 66
+
+    (50) expr -> expr LEQUAL . expr
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 89
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 67
+
+    (51) expr -> expr LESST . expr
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 90
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 68
+
+    (52) expr -> expr MOD . expr
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 91
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 69
+
+    (53) expr -> expr DIVIDE . expr
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 92
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 70
+
+    (54) expr -> expr TIMES . expr
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 93
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 71
+
+    (55) expr -> expr MINUS . expr
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 94
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 72
+
+    (56) expr -> expr PLUS . expr
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 95
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 73
+
+    (42) expr -> LPAREN expr . RPAREN
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+    RPAREN          shift and go to state 96
+    OR              shift and go to state 60
+    AND             shift and go to state 61
+    NEQUAL          shift and go to state 62
+    EQUAL           shift and go to state 63
+    GEQUAL          shift and go to state 64
+    GREATERT        shift and go to state 65
+    LEQUAL          shift and go to state 66
+    LESST           shift and go to state 67
+    MOD             shift and go to state 68
+    DIVIDE          shift and go to state 69
+    TIMES           shift and go to state 70
+    MINUS           shift and go to state 71
+    PLUS            shift and go to state 72
+
+
+state 74
+
+    (43) expr -> NOT expr .
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for NEQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for GEQUAL resolved as shift
+  ! shift/reduce conflict for GREATERT resolved as shift
+  ! shift/reduce conflict for LEQUAL resolved as shift
+  ! shift/reduce conflict for LESST resolved as shift
+  ! shift/reduce conflict for MOD resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+    SEMI            reduce using rule 43 (expr -> NOT expr .)
+    RPAREN          reduce using rule 43 (expr -> NOT expr .)
+    OR              shift and go to state 60
+    AND             shift and go to state 61
+    NEQUAL          shift and go to state 62
+    EQUAL           shift and go to state 63
+    GEQUAL          shift and go to state 64
+    GREATERT        shift and go to state 65
+    LEQUAL          shift and go to state 66
+    LESST           shift and go to state 67
+    MOD             shift and go to state 68
+    DIVIDE          shift and go to state 69
+    TIMES           shift and go to state 70
+    MINUS           shift and go to state 71
+    PLUS            shift and go to state 72
+
+
+state 75
+
+    (29) switch_statement -> SWITCH LPAREN ID . RPAREN LBRACE switch_block RBRACE
+    RPAREN          shift and go to state 97
+
+
+state 76
+
+    (37) assign_statement -> ID ASSIGN expr . SEMI
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+    SEMI            shift and go to state 98
+    OR              shift and go to state 60
+    AND             shift and go to state 61
+    NEQUAL          shift and go to state 62
+    EQUAL           shift and go to state 63
+    GEQUAL          shift and go to state 64
+    GREATERT        shift and go to state 65
+    LEQUAL          shift and go to state 66
+    LESST           shift and go to state 67
+    MOD             shift and go to state 68
+    DIVIDE          shift and go to state 69
+    TIMES           shift and go to state 70
+    MINUS           shift and go to state 71
+    PLUS            shift and go to state 72
+
+
+state 77
+
+    (28) for_statement -> FOR LPAREN var_declaration . SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE
+    SEMI            shift and go to state 99
+
+
+state 78
+
+    (27) while_statement -> WHILE LPAREN expr . RPAREN LBRACE block RBRACE
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+    RPAREN          shift and go to state 100
+    OR              shift and go to state 60
+    AND             shift and go to state 61
+    NEQUAL          shift and go to state 62
+    EQUAL           shift and go to state 63
+    GEQUAL          shift and go to state 64
+    GREATERT        shift and go to state 65
+    LEQUAL          shift and go to state 66
+    LESST           shift and go to state 67
+    MOD             shift and go to state 68
+    DIVIDE          shift and go to state 69
+    TIMES           shift and go to state 70
+    MINUS           shift and go to state 71
+    PLUS            shift and go to state 72
+
+
+state 79
+
+    (23) if_statement -> IF LPAREN expr . RPAREN LBRACE block RBRACE else_statement
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+    RPAREN          shift and go to state 101
+    OR              shift and go to state 60
+    AND             shift and go to state 61
+    NEQUAL          shift and go to state 62
+    EQUAL           shift and go to state 63
+    GEQUAL          shift and go to state 64
+    GREATERT        shift and go to state 65
+    LEQUAL          shift and go to state 66
+    LESST           shift and go to state 67
+    MOD             shift and go to state 68
+    DIVIDE          shift and go to state 69
+    TIMES           shift and go to state 70
+    MINUS           shift and go to state 71
+    PLUS            shift and go to state 72
+
+
+state 80
+
+    (36) main_declaration -> VOID MAIN LPAREN . RPAREN LBRACE block RBRACE
+    RPAREN          shift and go to state 102
+
+
+state 81
+
+    (34) var_declaration -> TYPE ID SEMI .
+    CONTINUE        reduce using rule 34 (var_declaration -> TYPE ID SEMI .)
+    BREAK           reduce using rule 34 (var_declaration -> TYPE ID SEMI .)
+    RETURN          reduce using rule 34 (var_declaration -> TYPE ID SEMI .)
+    SWITCH          reduce using rule 34 (var_declaration -> TYPE ID SEMI .)
+    FOR             reduce using rule 34 (var_declaration -> TYPE ID SEMI .)
+    WHILE           reduce using rule 34 (var_declaration -> TYPE ID SEMI .)
+    IF              reduce using rule 34 (var_declaration -> TYPE ID SEMI .)
+    ID              reduce using rule 34 (var_declaration -> TYPE ID SEMI .)
+    VOID            reduce using rule 34 (var_declaration -> TYPE ID SEMI .)
+    TYPE            reduce using rule 34 (var_declaration -> TYPE ID SEMI .)
+    MINUSMINUS      reduce using rule 34 (var_declaration -> TYPE ID SEMI .)
+    PLUSPLUS        reduce using rule 34 (var_declaration -> TYPE ID SEMI .)
+    $end            reduce using rule 34 (var_declaration -> TYPE ID SEMI .)
+    RBRACE          reduce using rule 34 (var_declaration -> TYPE ID SEMI .)
+    DEFAULT         reduce using rule 34 (var_declaration -> TYPE ID SEMI .)
+    CASE            reduce using rule 34 (var_declaration -> TYPE ID SEMI .)
+    SEMI            reduce using rule 34 (var_declaration -> TYPE ID SEMI .)
+
+
+state 82
+
+    (35) var_declaration -> TYPE ID ASSIGN . expr SEMI
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 103
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 83
+
+    (44) expr -> expr OR expr .
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for NEQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for GEQUAL resolved as shift
+  ! shift/reduce conflict for GREATERT resolved as shift
+  ! shift/reduce conflict for LEQUAL resolved as shift
+  ! shift/reduce conflict for LESST resolved as shift
+  ! shift/reduce conflict for MOD resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+    SEMI            reduce using rule 44 (expr -> expr OR expr .)
+    RPAREN          reduce using rule 44 (expr -> expr OR expr .)
+    OR              shift and go to state 60
+    AND             shift and go to state 61
+    NEQUAL          shift and go to state 62
+    EQUAL           shift and go to state 63
+    GEQUAL          shift and go to state 64
+    GREATERT        shift and go to state 65
+    LEQUAL          shift and go to state 66
+    LESST           shift and go to state 67
+    MOD             shift and go to state 68
+    DIVIDE          shift and go to state 69
+    TIMES           shift and go to state 70
+    MINUS           shift and go to state 71
+    PLUS            shift and go to state 72
+
+
+state 84
+
+    (45) expr -> expr AND expr .
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for NEQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for GEQUAL resolved as shift
+  ! shift/reduce conflict for GREATERT resolved as shift
+  ! shift/reduce conflict for LEQUAL resolved as shift
+  ! shift/reduce conflict for LESST resolved as shift
+  ! shift/reduce conflict for MOD resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+    SEMI            reduce using rule 45 (expr -> expr AND expr .)
+    RPAREN          reduce using rule 45 (expr -> expr AND expr .)
+    OR              shift and go to state 60
+    AND             shift and go to state 61
+    NEQUAL          shift and go to state 62
+    EQUAL           shift and go to state 63
+    GEQUAL          shift and go to state 64
+    GREATERT        shift and go to state 65
+    LEQUAL          shift and go to state 66
+    LESST           shift and go to state 67
+    MOD             shift and go to state 68
+    DIVIDE          shift and go to state 69
+    TIMES           shift and go to state 70
+    MINUS           shift and go to state 71
+    PLUS            shift and go to state 72
+
+
+state 85
+
+    (46) expr -> expr NEQUAL expr .
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+    SEMI            reduce using rule 46 (expr -> expr NEQUAL expr .)
+    OR              reduce using rule 46 (expr -> expr NEQUAL expr .)
+    AND             reduce using rule 46 (expr -> expr NEQUAL expr .)
+    NEQUAL          reduce using rule 46 (expr -> expr NEQUAL expr .)
+    EQUAL           reduce using rule 46 (expr -> expr NEQUAL expr .)
+    GEQUAL          reduce using rule 46 (expr -> expr NEQUAL expr .)
+    GREATERT        reduce using rule 46 (expr -> expr NEQUAL expr .)
+    LEQUAL          reduce using rule 46 (expr -> expr NEQUAL expr .)
+    LESST           reduce using rule 46 (expr -> expr NEQUAL expr .)
+    MOD             reduce using rule 46 (expr -> expr NEQUAL expr .)
+    RPAREN          reduce using rule 46 (expr -> expr NEQUAL expr .)
+    DIVIDE          shift and go to state 69
+    TIMES           shift and go to state 70
+    MINUS           shift and go to state 71
+    PLUS            shift and go to state 72
+
+
+state 86
+
+    (47) expr -> expr EQUAL expr .
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+    SEMI            reduce using rule 47 (expr -> expr EQUAL expr .)
+    OR              reduce using rule 47 (expr -> expr EQUAL expr .)
+    AND             reduce using rule 47 (expr -> expr EQUAL expr .)
+    NEQUAL          reduce using rule 47 (expr -> expr EQUAL expr .)
+    EQUAL           reduce using rule 47 (expr -> expr EQUAL expr .)
+    GEQUAL          reduce using rule 47 (expr -> expr EQUAL expr .)
+    GREATERT        reduce using rule 47 (expr -> expr EQUAL expr .)
+    LEQUAL          reduce using rule 47 (expr -> expr EQUAL expr .)
+    LESST           reduce using rule 47 (expr -> expr EQUAL expr .)
+    MOD             reduce using rule 47 (expr -> expr EQUAL expr .)
+    RPAREN          reduce using rule 47 (expr -> expr EQUAL expr .)
+    DIVIDE          shift and go to state 69
+    TIMES           shift and go to state 70
+    MINUS           shift and go to state 71
+    PLUS            shift and go to state 72
+
+
+state 87
+
+    (48) expr -> expr GEQUAL expr .
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+    SEMI            reduce using rule 48 (expr -> expr GEQUAL expr .)
+    OR              reduce using rule 48 (expr -> expr GEQUAL expr .)
+    AND             reduce using rule 48 (expr -> expr GEQUAL expr .)
+    NEQUAL          reduce using rule 48 (expr -> expr GEQUAL expr .)
+    EQUAL           reduce using rule 48 (expr -> expr GEQUAL expr .)
+    GEQUAL          reduce using rule 48 (expr -> expr GEQUAL expr .)
+    GREATERT        reduce using rule 48 (expr -> expr GEQUAL expr .)
+    LEQUAL          reduce using rule 48 (expr -> expr GEQUAL expr .)
+    LESST           reduce using rule 48 (expr -> expr GEQUAL expr .)
+    MOD             reduce using rule 48 (expr -> expr GEQUAL expr .)
+    RPAREN          reduce using rule 48 (expr -> expr GEQUAL expr .)
+    DIVIDE          shift and go to state 69
+    TIMES           shift and go to state 70
+    MINUS           shift and go to state 71
+    PLUS            shift and go to state 72
+
+
+state 88
+
+    (49) expr -> expr GREATERT expr .
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+    SEMI            reduce using rule 49 (expr -> expr GREATERT expr .)
+    OR              reduce using rule 49 (expr -> expr GREATERT expr .)
+    AND             reduce using rule 49 (expr -> expr GREATERT expr .)
+    NEQUAL          reduce using rule 49 (expr -> expr GREATERT expr .)
+    EQUAL           reduce using rule 49 (expr -> expr GREATERT expr .)
+    GEQUAL          reduce using rule 49 (expr -> expr GREATERT expr .)
+    GREATERT        reduce using rule 49 (expr -> expr GREATERT expr .)
+    LEQUAL          reduce using rule 49 (expr -> expr GREATERT expr .)
+    LESST           reduce using rule 49 (expr -> expr GREATERT expr .)
+    MOD             reduce using rule 49 (expr -> expr GREATERT expr .)
+    RPAREN          reduce using rule 49 (expr -> expr GREATERT expr .)
+    DIVIDE          shift and go to state 69
+    TIMES           shift and go to state 70
+    MINUS           shift and go to state 71
+    PLUS            shift and go to state 72
+
+
+state 89
+
+    (50) expr -> expr LEQUAL expr .
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+    SEMI            reduce using rule 50 (expr -> expr LEQUAL expr .)
+    OR              reduce using rule 50 (expr -> expr LEQUAL expr .)
+    AND             reduce using rule 50 (expr -> expr LEQUAL expr .)
+    NEQUAL          reduce using rule 50 (expr -> expr LEQUAL expr .)
+    EQUAL           reduce using rule 50 (expr -> expr LEQUAL expr .)
+    GEQUAL          reduce using rule 50 (expr -> expr LEQUAL expr .)
+    GREATERT        reduce using rule 50 (expr -> expr LEQUAL expr .)
+    LEQUAL          reduce using rule 50 (expr -> expr LEQUAL expr .)
+    LESST           reduce using rule 50 (expr -> expr LEQUAL expr .)
+    MOD             reduce using rule 50 (expr -> expr LEQUAL expr .)
+    RPAREN          reduce using rule 50 (expr -> expr LEQUAL expr .)
+    DIVIDE          shift and go to state 69
+    TIMES           shift and go to state 70
+    MINUS           shift and go to state 71
+    PLUS            shift and go to state 72
+
+
+state 90
+
+    (51) expr -> expr LESST expr .
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+    SEMI            reduce using rule 51 (expr -> expr LESST expr .)
+    OR              reduce using rule 51 (expr -> expr LESST expr .)
+    AND             reduce using rule 51 (expr -> expr LESST expr .)
+    NEQUAL          reduce using rule 51 (expr -> expr LESST expr .)
+    EQUAL           reduce using rule 51 (expr -> expr LESST expr .)
+    GEQUAL          reduce using rule 51 (expr -> expr LESST expr .)
+    GREATERT        reduce using rule 51 (expr -> expr LESST expr .)
+    LEQUAL          reduce using rule 51 (expr -> expr LESST expr .)
+    LESST           reduce using rule 51 (expr -> expr LESST expr .)
+    MOD             reduce using rule 51 (expr -> expr LESST expr .)
+    RPAREN          reduce using rule 51 (expr -> expr LESST expr .)
+    DIVIDE          shift and go to state 69
+    TIMES           shift and go to state 70
+    MINUS           shift and go to state 71
+    PLUS            shift and go to state 72
+
+
+state 91
+
+    (52) expr -> expr MOD expr .
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for NEQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for GEQUAL resolved as shift
+  ! shift/reduce conflict for GREATERT resolved as shift
+  ! shift/reduce conflict for LEQUAL resolved as shift
+  ! shift/reduce conflict for LESST resolved as shift
+  ! shift/reduce conflict for MOD resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+    SEMI            reduce using rule 52 (expr -> expr MOD expr .)
+    RPAREN          reduce using rule 52 (expr -> expr MOD expr .)
+    OR              shift and go to state 60
+    AND             shift and go to state 61
+    NEQUAL          shift and go to state 62
+    EQUAL           shift and go to state 63
+    GEQUAL          shift and go to state 64
+    GREATERT        shift and go to state 65
+    LEQUAL          shift and go to state 66
+    LESST           shift and go to state 67
+    MOD             shift and go to state 68
+    DIVIDE          shift and go to state 69
+    TIMES           shift and go to state 70
+    MINUS           shift and go to state 71
+    PLUS            shift and go to state 72
+
+
+state 92
+
+    (53) expr -> expr DIVIDE expr .
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+    SEMI            reduce using rule 53 (expr -> expr DIVIDE expr .)
+    OR              reduce using rule 53 (expr -> expr DIVIDE expr .)
+    AND             reduce using rule 53 (expr -> expr DIVIDE expr .)
+    NEQUAL          reduce using rule 53 (expr -> expr DIVIDE expr .)
+    EQUAL           reduce using rule 53 (expr -> expr DIVIDE expr .)
+    GEQUAL          reduce using rule 53 (expr -> expr DIVIDE expr .)
+    GREATERT        reduce using rule 53 (expr -> expr DIVIDE expr .)
+    LEQUAL          reduce using rule 53 (expr -> expr DIVIDE expr .)
+    LESST           reduce using rule 53 (expr -> expr DIVIDE expr .)
+    MOD             reduce using rule 53 (expr -> expr DIVIDE expr .)
+    DIVIDE          reduce using rule 53 (expr -> expr DIVIDE expr .)
+    TIMES           reduce using rule 53 (expr -> expr DIVIDE expr .)
+    MINUS           reduce using rule 53 (expr -> expr DIVIDE expr .)
+    PLUS            reduce using rule 53 (expr -> expr DIVIDE expr .)
+    RPAREN          reduce using rule 53 (expr -> expr DIVIDE expr .)
+
+
+state 93
+
+    (54) expr -> expr TIMES expr .
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+    SEMI            reduce using rule 54 (expr -> expr TIMES expr .)
+    OR              reduce using rule 54 (expr -> expr TIMES expr .)
+    AND             reduce using rule 54 (expr -> expr TIMES expr .)
+    NEQUAL          reduce using rule 54 (expr -> expr TIMES expr .)
+    EQUAL           reduce using rule 54 (expr -> expr TIMES expr .)
+    GEQUAL          reduce using rule 54 (expr -> expr TIMES expr .)
+    GREATERT        reduce using rule 54 (expr -> expr TIMES expr .)
+    LEQUAL          reduce using rule 54 (expr -> expr TIMES expr .)
+    LESST           reduce using rule 54 (expr -> expr TIMES expr .)
+    MOD             reduce using rule 54 (expr -> expr TIMES expr .)
+    DIVIDE          reduce using rule 54 (expr -> expr TIMES expr .)
+    TIMES           reduce using rule 54 (expr -> expr TIMES expr .)
+    MINUS           reduce using rule 54 (expr -> expr TIMES expr .)
+    PLUS            reduce using rule 54 (expr -> expr TIMES expr .)
+    RPAREN          reduce using rule 54 (expr -> expr TIMES expr .)
+
+
+state 94
+
+    (55) expr -> expr MINUS expr .
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+    SEMI            reduce using rule 55 (expr -> expr MINUS expr .)
+    OR              reduce using rule 55 (expr -> expr MINUS expr .)
+    AND             reduce using rule 55 (expr -> expr MINUS expr .)
+    NEQUAL          reduce using rule 55 (expr -> expr MINUS expr .)
+    EQUAL           reduce using rule 55 (expr -> expr MINUS expr .)
+    GEQUAL          reduce using rule 55 (expr -> expr MINUS expr .)
+    GREATERT        reduce using rule 55 (expr -> expr MINUS expr .)
+    LEQUAL          reduce using rule 55 (expr -> expr MINUS expr .)
+    LESST           reduce using rule 55 (expr -> expr MINUS expr .)
+    MOD             reduce using rule 55 (expr -> expr MINUS expr .)
+    MINUS           reduce using rule 55 (expr -> expr MINUS expr .)
+    PLUS            reduce using rule 55 (expr -> expr MINUS expr .)
+    RPAREN          reduce using rule 55 (expr -> expr MINUS expr .)
+    DIVIDE          shift and go to state 69
+    TIMES           shift and go to state 70
+
+
+state 95
+
+    (56) expr -> expr PLUS expr .
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+    SEMI            reduce using rule 56 (expr -> expr PLUS expr .)
+    OR              reduce using rule 56 (expr -> expr PLUS expr .)
+    AND             reduce using rule 56 (expr -> expr PLUS expr .)
+    NEQUAL          reduce using rule 56 (expr -> expr PLUS expr .)
+    EQUAL           reduce using rule 56 (expr -> expr PLUS expr .)
+    GEQUAL          reduce using rule 56 (expr -> expr PLUS expr .)
+    GREATERT        reduce using rule 56 (expr -> expr PLUS expr .)
+    LEQUAL          reduce using rule 56 (expr -> expr PLUS expr .)
+    LESST           reduce using rule 56 (expr -> expr PLUS expr .)
+    MOD             reduce using rule 56 (expr -> expr PLUS expr .)
+    MINUS           reduce using rule 56 (expr -> expr PLUS expr .)
+    PLUS            reduce using rule 56 (expr -> expr PLUS expr .)
+    RPAREN          reduce using rule 56 (expr -> expr PLUS expr .)
+    DIVIDE          shift and go to state 69
+    TIMES           shift and go to state 70
+
+
+state 96
+
+    (42) expr -> LPAREN expr RPAREN .
+    SEMI            reduce using rule 42 (expr -> LPAREN expr RPAREN .)
+    OR              reduce using rule 42 (expr -> LPAREN expr RPAREN .)
+    AND             reduce using rule 42 (expr -> LPAREN expr RPAREN .)
+    NEQUAL          reduce using rule 42 (expr -> LPAREN expr RPAREN .)
+    EQUAL           reduce using rule 42 (expr -> LPAREN expr RPAREN .)
+    GEQUAL          reduce using rule 42 (expr -> LPAREN expr RPAREN .)
+    GREATERT        reduce using rule 42 (expr -> LPAREN expr RPAREN .)
+    LEQUAL          reduce using rule 42 (expr -> LPAREN expr RPAREN .)
+    LESST           reduce using rule 42 (expr -> LPAREN expr RPAREN .)
+    MOD             reduce using rule 42 (expr -> LPAREN expr RPAREN .)
+    DIVIDE          reduce using rule 42 (expr -> LPAREN expr RPAREN .)
+    TIMES           reduce using rule 42 (expr -> LPAREN expr RPAREN .)
+    MINUS           reduce using rule 42 (expr -> LPAREN expr RPAREN .)
+    PLUS            reduce using rule 42 (expr -> LPAREN expr RPAREN .)
+    RPAREN          reduce using rule 42 (expr -> LPAREN expr RPAREN .)
+
+
+state 97
+
+    (29) switch_statement -> SWITCH LPAREN ID RPAREN . LBRACE switch_block RBRACE
+    LBRACE          shift and go to state 104
+
+
+state 98
+
+    (37) assign_statement -> ID ASSIGN expr SEMI .
+    CONTINUE        reduce using rule 37 (assign_statement -> ID ASSIGN expr SEMI .)
+    BREAK           reduce using rule 37 (assign_statement -> ID ASSIGN expr SEMI .)
+    RETURN          reduce using rule 37 (assign_statement -> ID ASSIGN expr SEMI .)
+    SWITCH          reduce using rule 37 (assign_statement -> ID ASSIGN expr SEMI .)
+    FOR             reduce using rule 37 (assign_statement -> ID ASSIGN expr SEMI .)
+    WHILE           reduce using rule 37 (assign_statement -> ID ASSIGN expr SEMI .)
+    IF              reduce using rule 37 (assign_statement -> ID ASSIGN expr SEMI .)
+    ID              reduce using rule 37 (assign_statement -> ID ASSIGN expr SEMI .)
+    VOID            reduce using rule 37 (assign_statement -> ID ASSIGN expr SEMI .)
+    TYPE            reduce using rule 37 (assign_statement -> ID ASSIGN expr SEMI .)
+    MINUSMINUS      reduce using rule 37 (assign_statement -> ID ASSIGN expr SEMI .)
+    PLUSPLUS        reduce using rule 37 (assign_statement -> ID ASSIGN expr SEMI .)
+    $end            reduce using rule 37 (assign_statement -> ID ASSIGN expr SEMI .)
+    RBRACE          reduce using rule 37 (assign_statement -> ID ASSIGN expr SEMI .)
+    DEFAULT         reduce using rule 37 (assign_statement -> ID ASSIGN expr SEMI .)
+    CASE            reduce using rule 37 (assign_statement -> ID ASSIGN expr SEMI .)
+    RPAREN          reduce using rule 37 (assign_statement -> ID ASSIGN expr SEMI .)
+
+
+state 99
+
+    (28) for_statement -> FOR LPAREN var_declaration SEMI . expr SEMI assign_statement RPAREN LBRACE block RBRACE
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 105
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 100
+
+    (27) while_statement -> WHILE LPAREN expr RPAREN . LBRACE block RBRACE
+    LBRACE          shift and go to state 106
+
+
+state 101
+
+    (23) if_statement -> IF LPAREN expr RPAREN . LBRACE block RBRACE else_statement
+    LBRACE          shift and go to state 107
+
+
+state 102
+
+    (36) main_declaration -> VOID MAIN LPAREN RPAREN . LBRACE block RBRACE
+    LBRACE          shift and go to state 108
+
+
+state 103
+
+    (35) var_declaration -> TYPE ID ASSIGN expr . SEMI
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+    SEMI            shift and go to state 109
+    OR              shift and go to state 60
+    AND             shift and go to state 61
+    NEQUAL          shift and go to state 62
+    EQUAL           shift and go to state 63
+    GEQUAL          shift and go to state 64
+    GREATERT        shift and go to state 65
+    LEQUAL          shift and go to state 66
+    LESST           shift and go to state 67
+    MOD             shift and go to state 68
+    DIVIDE          shift and go to state 69
+    TIMES           shift and go to state 70
+    MINUS           shift and go to state 71
+    PLUS            shift and go to state 72
+
+
+state 104
+
+    (29) switch_statement -> SWITCH LPAREN ID RPAREN LBRACE . switch_block RBRACE
+    (30) switch_block -> .
+    (31) switch_block -> . block
+    (32) switch_block -> . DEFAULT COL block
+    (33) switch_block -> . CASE literal COL block switch_block
+    (1) block -> .
+    (2) block -> . statements
+    (3) statements -> . statements statement
+    (4) statements -> . statement
+    (5) statement -> . minusminus_statement
+    (6) statement -> . plusplus_statement
+    (7) statement -> . continue_statement
+    (8) statement -> . break_statement
+    (9) statement -> . return_statement
+    (10) statement -> . switch_statement
+    (11) statement -> . for_statement
+    (12) statement -> . while_statement
+    (13) statement -> . if_statement
+    (14) statement -> . assign_statement
+    (15) statement -> . main_declaration
+    (16) statement -> . var_declaration
+    (18) minusminus_statement -> . minusminus_expr SEMI
+    (17) plusplus_statement -> . plusplus_expr SEMI
+    (19) continue_statement -> . CONTINUE SEMI
+    (20) break_statement -> . BREAK SEMI
+    (21) return_statement -> . RETURN SEMI
+    (22) return_statement -> . RETURN expr SEMI
+    (29) switch_statement -> . SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE
+    (28) for_statement -> . FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE
+    (27) while_statement -> . WHILE LPAREN expr RPAREN LBRACE block RBRACE
+    (23) if_statement -> . IF LPAREN expr RPAREN LBRACE block RBRACE else_statement
+    (37) assign_statement -> . ID ASSIGN expr SEMI
+    (36) main_declaration -> . VOID MAIN LPAREN RPAREN LBRACE block RBRACE
+    (34) var_declaration -> . TYPE ID SEMI
+    (35) var_declaration -> . TYPE ID ASSIGN expr SEMI
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+  ! reduce/reduce conflict for RBRACE resolved using rule 1 (block -> .)
+    DEFAULT         shift and go to state 112
+    CASE            shift and go to state 113
+    RBRACE          reduce using rule 1 (block -> .)
+    CONTINUE        shift and go to state 18
+    BREAK           shift and go to state 19
+    RETURN          shift and go to state 20
+    SWITCH          shift and go to state 21
+    FOR             shift and go to state 23
+    WHILE           shift and go to state 24
+    IF              shift and go to state 25
+    ID              shift and go to state 22
+    VOID            shift and go to state 26
+    TYPE            shift and go to state 27
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    switch_block                   shift and go to state 110
+    block                          shift and go to state 111
+    statements                     shift and go to state 2
+    statement                      shift and go to state 3
+    minusminus_statement           shift and go to state 4
+    plusplus_statement             shift and go to state 5
+    continue_statement             shift and go to state 6
+    break_statement                shift and go to state 7
+    return_statement               shift and go to state 8
+    switch_statement               shift and go to state 9
+    for_statement                  shift and go to state 10
+    while_statement                shift and go to state 11
+    if_statement                   shift and go to state 12
+    assign_statement               shift and go to state 13
+    main_declaration               shift and go to state 14
+    var_declaration                shift and go to state 15
+    minusminus_expr                shift and go to state 16
+    plusplus_expr                  shift and go to state 17
+
+state 105
+
+    (28) for_statement -> FOR LPAREN var_declaration SEMI expr . SEMI assign_statement RPAREN LBRACE block RBRACE
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+    SEMI            shift and go to state 114
+    OR              shift and go to state 60
+    AND             shift and go to state 61
+    NEQUAL          shift and go to state 62
+    EQUAL           shift and go to state 63
+    GEQUAL          shift and go to state 64
+    GREATERT        shift and go to state 65
+    LEQUAL          shift and go to state 66
+    LESST           shift and go to state 67
+    MOD             shift and go to state 68
+    DIVIDE          shift and go to state 69
+    TIMES           shift and go to state 70
+    MINUS           shift and go to state 71
+    PLUS            shift and go to state 72
+
+
+state 106
+
+    (27) while_statement -> WHILE LPAREN expr RPAREN LBRACE . block RBRACE
+    (1) block -> .
+    (2) block -> . statements
+    (3) statements -> . statements statement
+    (4) statements -> . statement
+    (5) statement -> . minusminus_statement
+    (6) statement -> . plusplus_statement
+    (7) statement -> . continue_statement
+    (8) statement -> . break_statement
+    (9) statement -> . return_statement
+    (10) statement -> . switch_statement
+    (11) statement -> . for_statement
+    (12) statement -> . while_statement
+    (13) statement -> . if_statement
+    (14) statement -> . assign_statement
+    (15) statement -> . main_declaration
+    (16) statement -> . var_declaration
+    (18) minusminus_statement -> . minusminus_expr SEMI
+    (17) plusplus_statement -> . plusplus_expr SEMI
+    (19) continue_statement -> . CONTINUE SEMI
+    (20) break_statement -> . BREAK SEMI
+    (21) return_statement -> . RETURN SEMI
+    (22) return_statement -> . RETURN expr SEMI
+    (29) switch_statement -> . SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE
+    (28) for_statement -> . FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE
+    (27) while_statement -> . WHILE LPAREN expr RPAREN LBRACE block RBRACE
+    (23) if_statement -> . IF LPAREN expr RPAREN LBRACE block RBRACE else_statement
+    (37) assign_statement -> . ID ASSIGN expr SEMI
+    (36) main_declaration -> . VOID MAIN LPAREN RPAREN LBRACE block RBRACE
+    (34) var_declaration -> . TYPE ID SEMI
+    (35) var_declaration -> . TYPE ID ASSIGN expr SEMI
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    RBRACE          reduce using rule 1 (block -> .)
+    CONTINUE        shift and go to state 18
+    BREAK           shift and go to state 19
+    RETURN          shift and go to state 20
+    SWITCH          shift and go to state 21
+    FOR             shift and go to state 23
+    WHILE           shift and go to state 24
+    IF              shift and go to state 25
+    ID              shift and go to state 22
+    VOID            shift and go to state 26
+    TYPE            shift and go to state 27
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    block                          shift and go to state 115
+    statements                     shift and go to state 2
+    statement                      shift and go to state 3
+    minusminus_statement           shift and go to state 4
+    plusplus_statement             shift and go to state 5
+    continue_statement             shift and go to state 6
+    break_statement                shift and go to state 7
+    return_statement               shift and go to state 8
+    switch_statement               shift and go to state 9
+    for_statement                  shift and go to state 10
+    while_statement                shift and go to state 11
+    if_statement                   shift and go to state 12
+    assign_statement               shift and go to state 13
+    main_declaration               shift and go to state 14
+    var_declaration                shift and go to state 15
+    minusminus_expr                shift and go to state 16
+    plusplus_expr                  shift and go to state 17
+
+state 107
+
+    (23) if_statement -> IF LPAREN expr RPAREN LBRACE . block RBRACE else_statement
+    (1) block -> .
+    (2) block -> . statements
+    (3) statements -> . statements statement
+    (4) statements -> . statement
+    (5) statement -> . minusminus_statement
+    (6) statement -> . plusplus_statement
+    (7) statement -> . continue_statement
+    (8) statement -> . break_statement
+    (9) statement -> . return_statement
+    (10) statement -> . switch_statement
+    (11) statement -> . for_statement
+    (12) statement -> . while_statement
+    (13) statement -> . if_statement
+    (14) statement -> . assign_statement
+    (15) statement -> . main_declaration
+    (16) statement -> . var_declaration
+    (18) minusminus_statement -> . minusminus_expr SEMI
+    (17) plusplus_statement -> . plusplus_expr SEMI
+    (19) continue_statement -> . CONTINUE SEMI
+    (20) break_statement -> . BREAK SEMI
+    (21) return_statement -> . RETURN SEMI
+    (22) return_statement -> . RETURN expr SEMI
+    (29) switch_statement -> . SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE
+    (28) for_statement -> . FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE
+    (27) while_statement -> . WHILE LPAREN expr RPAREN LBRACE block RBRACE
+    (23) if_statement -> . IF LPAREN expr RPAREN LBRACE block RBRACE else_statement
+    (37) assign_statement -> . ID ASSIGN expr SEMI
+    (36) main_declaration -> . VOID MAIN LPAREN RPAREN LBRACE block RBRACE
+    (34) var_declaration -> . TYPE ID SEMI
+    (35) var_declaration -> . TYPE ID ASSIGN expr SEMI
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    RBRACE          reduce using rule 1 (block -> .)
+    CONTINUE        shift and go to state 18
+    BREAK           shift and go to state 19
+    RETURN          shift and go to state 20
+    SWITCH          shift and go to state 21
+    FOR             shift and go to state 23
+    WHILE           shift and go to state 24
+    IF              shift and go to state 25
+    ID              shift and go to state 22
+    VOID            shift and go to state 26
+    TYPE            shift and go to state 27
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    block                          shift and go to state 116
+    statements                     shift and go to state 2
+    statement                      shift and go to state 3
+    minusminus_statement           shift and go to state 4
+    plusplus_statement             shift and go to state 5
+    continue_statement             shift and go to state 6
+    break_statement                shift and go to state 7
+    return_statement               shift and go to state 8
+    switch_statement               shift and go to state 9
+    for_statement                  shift and go to state 10
+    while_statement                shift and go to state 11
+    if_statement                   shift and go to state 12
+    assign_statement               shift and go to state 13
+    main_declaration               shift and go to state 14
+    var_declaration                shift and go to state 15
+    minusminus_expr                shift and go to state 16
+    plusplus_expr                  shift and go to state 17
+
+state 108
+
+    (36) main_declaration -> VOID MAIN LPAREN RPAREN LBRACE . block RBRACE
+    (1) block -> .
+    (2) block -> . statements
+    (3) statements -> . statements statement
+    (4) statements -> . statement
+    (5) statement -> . minusminus_statement
+    (6) statement -> . plusplus_statement
+    (7) statement -> . continue_statement
+    (8) statement -> . break_statement
+    (9) statement -> . return_statement
+    (10) statement -> . switch_statement
+    (11) statement -> . for_statement
+    (12) statement -> . while_statement
+    (13) statement -> . if_statement
+    (14) statement -> . assign_statement
+    (15) statement -> . main_declaration
+    (16) statement -> . var_declaration
+    (18) minusminus_statement -> . minusminus_expr SEMI
+    (17) plusplus_statement -> . plusplus_expr SEMI
+    (19) continue_statement -> . CONTINUE SEMI
+    (20) break_statement -> . BREAK SEMI
+    (21) return_statement -> . RETURN SEMI
+    (22) return_statement -> . RETURN expr SEMI
+    (29) switch_statement -> . SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE
+    (28) for_statement -> . FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE
+    (27) while_statement -> . WHILE LPAREN expr RPAREN LBRACE block RBRACE
+    (23) if_statement -> . IF LPAREN expr RPAREN LBRACE block RBRACE else_statement
+    (37) assign_statement -> . ID ASSIGN expr SEMI
+    (36) main_declaration -> . VOID MAIN LPAREN RPAREN LBRACE block RBRACE
+    (34) var_declaration -> . TYPE ID SEMI
+    (35) var_declaration -> . TYPE ID ASSIGN expr SEMI
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    RBRACE          reduce using rule 1 (block -> .)
+    CONTINUE        shift and go to state 18
+    BREAK           shift and go to state 19
+    RETURN          shift and go to state 20
+    SWITCH          shift and go to state 21
+    FOR             shift and go to state 23
+    WHILE           shift and go to state 24
+    IF              shift and go to state 25
+    ID              shift and go to state 22
+    VOID            shift and go to state 26
+    TYPE            shift and go to state 27
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    block                          shift and go to state 117
+    statements                     shift and go to state 2
+    statement                      shift and go to state 3
+    minusminus_statement           shift and go to state 4
+    plusplus_statement             shift and go to state 5
+    continue_statement             shift and go to state 6
+    break_statement                shift and go to state 7
+    return_statement               shift and go to state 8
+    switch_statement               shift and go to state 9
+    for_statement                  shift and go to state 10
+    while_statement                shift and go to state 11
+    if_statement                   shift and go to state 12
+    assign_statement               shift and go to state 13
+    main_declaration               shift and go to state 14
+    var_declaration                shift and go to state 15
+    minusminus_expr                shift and go to state 16
+    plusplus_expr                  shift and go to state 17
+
+state 109
+
+    (35) var_declaration -> TYPE ID ASSIGN expr SEMI .
+    CONTINUE        reduce using rule 35 (var_declaration -> TYPE ID ASSIGN expr SEMI .)
+    BREAK           reduce using rule 35 (var_declaration -> TYPE ID ASSIGN expr SEMI .)
+    RETURN          reduce using rule 35 (var_declaration -> TYPE ID ASSIGN expr SEMI .)
+    SWITCH          reduce using rule 35 (var_declaration -> TYPE ID ASSIGN expr SEMI .)
+    FOR             reduce using rule 35 (var_declaration -> TYPE ID ASSIGN expr SEMI .)
+    WHILE           reduce using rule 35 (var_declaration -> TYPE ID ASSIGN expr SEMI .)
+    IF              reduce using rule 35 (var_declaration -> TYPE ID ASSIGN expr SEMI .)
+    ID              reduce using rule 35 (var_declaration -> TYPE ID ASSIGN expr SEMI .)
+    VOID            reduce using rule 35 (var_declaration -> TYPE ID ASSIGN expr SEMI .)
+    TYPE            reduce using rule 35 (var_declaration -> TYPE ID ASSIGN expr SEMI .)
+    MINUSMINUS      reduce using rule 35 (var_declaration -> TYPE ID ASSIGN expr SEMI .)
+    PLUSPLUS        reduce using rule 35 (var_declaration -> TYPE ID ASSIGN expr SEMI .)
+    $end            reduce using rule 35 (var_declaration -> TYPE ID ASSIGN expr SEMI .)
+    RBRACE          reduce using rule 35 (var_declaration -> TYPE ID ASSIGN expr SEMI .)
+    DEFAULT         reduce using rule 35 (var_declaration -> TYPE ID ASSIGN expr SEMI .)
+    CASE            reduce using rule 35 (var_declaration -> TYPE ID ASSIGN expr SEMI .)
+    SEMI            reduce using rule 35 (var_declaration -> TYPE ID ASSIGN expr SEMI .)
+
+
+state 110
+
+    (29) switch_statement -> SWITCH LPAREN ID RPAREN LBRACE switch_block . RBRACE
+    RBRACE          shift and go to state 118
+
+
+state 111
+
+    (31) switch_block -> block .
+    RBRACE          reduce using rule 31 (switch_block -> block .)
+
+
+state 112
+
+    (32) switch_block -> DEFAULT . COL block
+    COL             shift and go to state 119
+
+
+state 113
+
+    (33) switch_block -> CASE . literal COL block switch_block
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+
+    literal                        shift and go to state 120
+
+state 114
+
+    (28) for_statement -> FOR LPAREN var_declaration SEMI expr SEMI . assign_statement RPAREN LBRACE block RBRACE
+    (37) assign_statement -> . ID ASSIGN expr SEMI
+    ID              shift and go to state 122
+
+    assign_statement               shift and go to state 121
+
+state 115
+
+    (27) while_statement -> WHILE LPAREN expr RPAREN LBRACE block . RBRACE
+    RBRACE          shift and go to state 123
+
+
+state 116
+
+    (23) if_statement -> IF LPAREN expr RPAREN LBRACE block . RBRACE else_statement
+    RBRACE          shift and go to state 124
+
+
+state 117
+
+    (36) main_declaration -> VOID MAIN LPAREN RPAREN LBRACE block . RBRACE
+    RBRACE          shift and go to state 125
+
+
+state 118
+
+    (29) switch_statement -> SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE .
+    CONTINUE        reduce using rule 29 (switch_statement -> SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE .)
+    BREAK           reduce using rule 29 (switch_statement -> SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE .)
+    RETURN          reduce using rule 29 (switch_statement -> SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE .)
+    SWITCH          reduce using rule 29 (switch_statement -> SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE .)
+    FOR             reduce using rule 29 (switch_statement -> SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE .)
+    WHILE           reduce using rule 29 (switch_statement -> SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE .)
+    IF              reduce using rule 29 (switch_statement -> SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE .)
+    ID              reduce using rule 29 (switch_statement -> SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE .)
+    VOID            reduce using rule 29 (switch_statement -> SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE .)
+    TYPE            reduce using rule 29 (switch_statement -> SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE .)
+    MINUSMINUS      reduce using rule 29 (switch_statement -> SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE .)
+    PLUSPLUS        reduce using rule 29 (switch_statement -> SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE .)
+    $end            reduce using rule 29 (switch_statement -> SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE .)
+    RBRACE          reduce using rule 29 (switch_statement -> SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE .)
+    DEFAULT         reduce using rule 29 (switch_statement -> SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE .)
+    CASE            reduce using rule 29 (switch_statement -> SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE .)
+
+
+state 119
+
+    (32) switch_block -> DEFAULT COL . block
+    (1) block -> .
+    (2) block -> . statements
+    (3) statements -> . statements statement
+    (4) statements -> . statement
+    (5) statement -> . minusminus_statement
+    (6) statement -> . plusplus_statement
+    (7) statement -> . continue_statement
+    (8) statement -> . break_statement
+    (9) statement -> . return_statement
+    (10) statement -> . switch_statement
+    (11) statement -> . for_statement
+    (12) statement -> . while_statement
+    (13) statement -> . if_statement
+    (14) statement -> . assign_statement
+    (15) statement -> . main_declaration
+    (16) statement -> . var_declaration
+    (18) minusminus_statement -> . minusminus_expr SEMI
+    (17) plusplus_statement -> . plusplus_expr SEMI
+    (19) continue_statement -> . CONTINUE SEMI
+    (20) break_statement -> . BREAK SEMI
+    (21) return_statement -> . RETURN SEMI
+    (22) return_statement -> . RETURN expr SEMI
+    (29) switch_statement -> . SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE
+    (28) for_statement -> . FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE
+    (27) while_statement -> . WHILE LPAREN expr RPAREN LBRACE block RBRACE
+    (23) if_statement -> . IF LPAREN expr RPAREN LBRACE block RBRACE else_statement
+    (37) assign_statement -> . ID ASSIGN expr SEMI
+    (36) main_declaration -> . VOID MAIN LPAREN RPAREN LBRACE block RBRACE
+    (34) var_declaration -> . TYPE ID SEMI
+    (35) var_declaration -> . TYPE ID ASSIGN expr SEMI
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    RBRACE          reduce using rule 1 (block -> .)
+    CONTINUE        shift and go to state 18
+    BREAK           shift and go to state 19
+    RETURN          shift and go to state 20
+    SWITCH          shift and go to state 21
+    FOR             shift and go to state 23
+    WHILE           shift and go to state 24
+    IF              shift and go to state 25
+    ID              shift and go to state 22
+    VOID            shift and go to state 26
+    TYPE            shift and go to state 27
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    block                          shift and go to state 126
+    statements                     shift and go to state 2
+    statement                      shift and go to state 3
+    minusminus_statement           shift and go to state 4
+    plusplus_statement             shift and go to state 5
+    continue_statement             shift and go to state 6
+    break_statement                shift and go to state 7
+    return_statement               shift and go to state 8
+    switch_statement               shift and go to state 9
+    for_statement                  shift and go to state 10
+    while_statement                shift and go to state 11
+    if_statement                   shift and go to state 12
+    assign_statement               shift and go to state 13
+    main_declaration               shift and go to state 14
+    var_declaration                shift and go to state 15
+    minusminus_expr                shift and go to state 16
+    plusplus_expr                  shift and go to state 17
+
+state 120
+
+    (33) switch_block -> CASE literal . COL block switch_block
+    COL             shift and go to state 127
+
+
+state 121
+
+    (28) for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement . RPAREN LBRACE block RBRACE
+    RPAREN          shift and go to state 128
+
+
+state 122
+
+    (37) assign_statement -> ID . ASSIGN expr SEMI
+    ASSIGN          shift and go to state 49
+
+
+state 123
+
+    (27) while_statement -> WHILE LPAREN expr RPAREN LBRACE block RBRACE .
+    CONTINUE        reduce using rule 27 (while_statement -> WHILE LPAREN expr RPAREN LBRACE block RBRACE .)
+    BREAK           reduce using rule 27 (while_statement -> WHILE LPAREN expr RPAREN LBRACE block RBRACE .)
+    RETURN          reduce using rule 27 (while_statement -> WHILE LPAREN expr RPAREN LBRACE block RBRACE .)
+    SWITCH          reduce using rule 27 (while_statement -> WHILE LPAREN expr RPAREN LBRACE block RBRACE .)
+    FOR             reduce using rule 27 (while_statement -> WHILE LPAREN expr RPAREN LBRACE block RBRACE .)
+    WHILE           reduce using rule 27 (while_statement -> WHILE LPAREN expr RPAREN LBRACE block RBRACE .)
+    IF              reduce using rule 27 (while_statement -> WHILE LPAREN expr RPAREN LBRACE block RBRACE .)
+    ID              reduce using rule 27 (while_statement -> WHILE LPAREN expr RPAREN LBRACE block RBRACE .)
+    VOID            reduce using rule 27 (while_statement -> WHILE LPAREN expr RPAREN LBRACE block RBRACE .)
+    TYPE            reduce using rule 27 (while_statement -> WHILE LPAREN expr RPAREN LBRACE block RBRACE .)
+    MINUSMINUS      reduce using rule 27 (while_statement -> WHILE LPAREN expr RPAREN LBRACE block RBRACE .)
+    PLUSPLUS        reduce using rule 27 (while_statement -> WHILE LPAREN expr RPAREN LBRACE block RBRACE .)
+    $end            reduce using rule 27 (while_statement -> WHILE LPAREN expr RPAREN LBRACE block RBRACE .)
+    RBRACE          reduce using rule 27 (while_statement -> WHILE LPAREN expr RPAREN LBRACE block RBRACE .)
+    DEFAULT         reduce using rule 27 (while_statement -> WHILE LPAREN expr RPAREN LBRACE block RBRACE .)
+    CASE            reduce using rule 27 (while_statement -> WHILE LPAREN expr RPAREN LBRACE block RBRACE .)
+
+
+state 124
+
+    (23) if_statement -> IF LPAREN expr RPAREN LBRACE block RBRACE . else_statement
+    (24) else_statement -> .
+    (25) else_statement -> . ELSE LBRACE block RBRACE
+    (26) else_statement -> . ELSE LPAREN expr RPAREN LBRACE block RBRACE else_statement
+    CONTINUE        reduce using rule 24 (else_statement -> .)
+    BREAK           reduce using rule 24 (else_statement -> .)
+    RETURN          reduce using rule 24 (else_statement -> .)
+    SWITCH          reduce using rule 24 (else_statement -> .)
+    FOR             reduce using rule 24 (else_statement -> .)
+    WHILE           reduce using rule 24 (else_statement -> .)
+    IF              reduce using rule 24 (else_statement -> .)
+    ID              reduce using rule 24 (else_statement -> .)
+    VOID            reduce using rule 24 (else_statement -> .)
+    TYPE            reduce using rule 24 (else_statement -> .)
+    MINUSMINUS      reduce using rule 24 (else_statement -> .)
+    PLUSPLUS        reduce using rule 24 (else_statement -> .)
+    $end            reduce using rule 24 (else_statement -> .)
+    RBRACE          reduce using rule 24 (else_statement -> .)
+    DEFAULT         reduce using rule 24 (else_statement -> .)
+    CASE            reduce using rule 24 (else_statement -> .)
+    ELSE            shift and go to state 130
+
+    else_statement                 shift and go to state 129
+
+state 125
+
+    (36) main_declaration -> VOID MAIN LPAREN RPAREN LBRACE block RBRACE .
+    CONTINUE        reduce using rule 36 (main_declaration -> VOID MAIN LPAREN RPAREN LBRACE block RBRACE .)
+    BREAK           reduce using rule 36 (main_declaration -> VOID MAIN LPAREN RPAREN LBRACE block RBRACE .)
+    RETURN          reduce using rule 36 (main_declaration -> VOID MAIN LPAREN RPAREN LBRACE block RBRACE .)
+    SWITCH          reduce using rule 36 (main_declaration -> VOID MAIN LPAREN RPAREN LBRACE block RBRACE .)
+    FOR             reduce using rule 36 (main_declaration -> VOID MAIN LPAREN RPAREN LBRACE block RBRACE .)
+    WHILE           reduce using rule 36 (main_declaration -> VOID MAIN LPAREN RPAREN LBRACE block RBRACE .)
+    IF              reduce using rule 36 (main_declaration -> VOID MAIN LPAREN RPAREN LBRACE block RBRACE .)
+    ID              reduce using rule 36 (main_declaration -> VOID MAIN LPAREN RPAREN LBRACE block RBRACE .)
+    VOID            reduce using rule 36 (main_declaration -> VOID MAIN LPAREN RPAREN LBRACE block RBRACE .)
+    TYPE            reduce using rule 36 (main_declaration -> VOID MAIN LPAREN RPAREN LBRACE block RBRACE .)
+    MINUSMINUS      reduce using rule 36 (main_declaration -> VOID MAIN LPAREN RPAREN LBRACE block RBRACE .)
+    PLUSPLUS        reduce using rule 36 (main_declaration -> VOID MAIN LPAREN RPAREN LBRACE block RBRACE .)
+    $end            reduce using rule 36 (main_declaration -> VOID MAIN LPAREN RPAREN LBRACE block RBRACE .)
+    RBRACE          reduce using rule 36 (main_declaration -> VOID MAIN LPAREN RPAREN LBRACE block RBRACE .)
+    DEFAULT         reduce using rule 36 (main_declaration -> VOID MAIN LPAREN RPAREN LBRACE block RBRACE .)
+    CASE            reduce using rule 36 (main_declaration -> VOID MAIN LPAREN RPAREN LBRACE block RBRACE .)
+
+
+state 126
+
+    (32) switch_block -> DEFAULT COL block .
+    RBRACE          reduce using rule 32 (switch_block -> DEFAULT COL block .)
+
+
+state 127
+
+    (33) switch_block -> CASE literal COL . block switch_block
+    (1) block -> .
+    (2) block -> . statements
+    (3) statements -> . statements statement
+    (4) statements -> . statement
+    (5) statement -> . minusminus_statement
+    (6) statement -> . plusplus_statement
+    (7) statement -> . continue_statement
+    (8) statement -> . break_statement
+    (9) statement -> . return_statement
+    (10) statement -> . switch_statement
+    (11) statement -> . for_statement
+    (12) statement -> . while_statement
+    (13) statement -> . if_statement
+    (14) statement -> . assign_statement
+    (15) statement -> . main_declaration
+    (16) statement -> . var_declaration
+    (18) minusminus_statement -> . minusminus_expr SEMI
+    (17) plusplus_statement -> . plusplus_expr SEMI
+    (19) continue_statement -> . CONTINUE SEMI
+    (20) break_statement -> . BREAK SEMI
+    (21) return_statement -> . RETURN SEMI
+    (22) return_statement -> . RETURN expr SEMI
+    (29) switch_statement -> . SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE
+    (28) for_statement -> . FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE
+    (27) while_statement -> . WHILE LPAREN expr RPAREN LBRACE block RBRACE
+    (23) if_statement -> . IF LPAREN expr RPAREN LBRACE block RBRACE else_statement
+    (37) assign_statement -> . ID ASSIGN expr SEMI
+    (36) main_declaration -> . VOID MAIN LPAREN RPAREN LBRACE block RBRACE
+    (34) var_declaration -> . TYPE ID SEMI
+    (35) var_declaration -> . TYPE ID ASSIGN expr SEMI
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+  ! shift/reduce conflict for CONTINUE resolved as shift
+  ! shift/reduce conflict for BREAK resolved as shift
+  ! shift/reduce conflict for RETURN resolved as shift
+  ! shift/reduce conflict for SWITCH resolved as shift
+  ! shift/reduce conflict for FOR resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for VOID resolved as shift
+  ! shift/reduce conflict for TYPE resolved as shift
+  ! shift/reduce conflict for MINUSMINUS resolved as shift
+  ! shift/reduce conflict for PLUSPLUS resolved as shift
+    DEFAULT         reduce using rule 1 (block -> .)
+    CASE            reduce using rule 1 (block -> .)
+    RBRACE          reduce using rule 1 (block -> .)
+    CONTINUE        shift and go to state 18
+    BREAK           shift and go to state 19
+    RETURN          shift and go to state 20
+    SWITCH          shift and go to state 21
+    FOR             shift and go to state 23
+    WHILE           shift and go to state 24
+    IF              shift and go to state 25
+    ID              shift and go to state 22
+    VOID            shift and go to state 26
+    TYPE            shift and go to state 27
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    block                          shift and go to state 131
+    statements                     shift and go to state 2
+    statement                      shift and go to state 3
+    minusminus_statement           shift and go to state 4
+    plusplus_statement             shift and go to state 5
+    continue_statement             shift and go to state 6
+    break_statement                shift and go to state 7
+    return_statement               shift and go to state 8
+    switch_statement               shift and go to state 9
+    for_statement                  shift and go to state 10
+    while_statement                shift and go to state 11
+    if_statement                   shift and go to state 12
+    assign_statement               shift and go to state 13
+    main_declaration               shift and go to state 14
+    var_declaration                shift and go to state 15
+    minusminus_expr                shift and go to state 16
+    plusplus_expr                  shift and go to state 17
+
+state 128
+
+    (28) for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN . LBRACE block RBRACE
+    LBRACE          shift and go to state 132
+
+
+state 129
+
+    (23) if_statement -> IF LPAREN expr RPAREN LBRACE block RBRACE else_statement .
+    CONTINUE        reduce using rule 23 (if_statement -> IF LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    BREAK           reduce using rule 23 (if_statement -> IF LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    RETURN          reduce using rule 23 (if_statement -> IF LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    SWITCH          reduce using rule 23 (if_statement -> IF LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    FOR             reduce using rule 23 (if_statement -> IF LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    WHILE           reduce using rule 23 (if_statement -> IF LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    IF              reduce using rule 23 (if_statement -> IF LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    ID              reduce using rule 23 (if_statement -> IF LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    VOID            reduce using rule 23 (if_statement -> IF LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    TYPE            reduce using rule 23 (if_statement -> IF LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    MINUSMINUS      reduce using rule 23 (if_statement -> IF LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    PLUSPLUS        reduce using rule 23 (if_statement -> IF LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    $end            reduce using rule 23 (if_statement -> IF LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    RBRACE          reduce using rule 23 (if_statement -> IF LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    DEFAULT         reduce using rule 23 (if_statement -> IF LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    CASE            reduce using rule 23 (if_statement -> IF LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+
+
+state 130
+
+    (25) else_statement -> ELSE . LBRACE block RBRACE
+    (26) else_statement -> ELSE . LPAREN expr RPAREN LBRACE block RBRACE else_statement
+    LBRACE          shift and go to state 133
+    LPAREN          shift and go to state 134
+
+
+state 131
+
+    (33) switch_block -> CASE literal COL block . switch_block
+    (30) switch_block -> .
+    (31) switch_block -> . block
+    (32) switch_block -> . DEFAULT COL block
+    (33) switch_block -> . CASE literal COL block switch_block
+    (1) block -> .
+    (2) block -> . statements
+    (3) statements -> . statements statement
+    (4) statements -> . statement
+    (5) statement -> . minusminus_statement
+    (6) statement -> . plusplus_statement
+    (7) statement -> . continue_statement
+    (8) statement -> . break_statement
+    (9) statement -> . return_statement
+    (10) statement -> . switch_statement
+    (11) statement -> . for_statement
+    (12) statement -> . while_statement
+    (13) statement -> . if_statement
+    (14) statement -> . assign_statement
+    (15) statement -> . main_declaration
+    (16) statement -> . var_declaration
+    (18) minusminus_statement -> . minusminus_expr SEMI
+    (17) plusplus_statement -> . plusplus_expr SEMI
+    (19) continue_statement -> . CONTINUE SEMI
+    (20) break_statement -> . BREAK SEMI
+    (21) return_statement -> . RETURN SEMI
+    (22) return_statement -> . RETURN expr SEMI
+    (29) switch_statement -> . SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE
+    (28) for_statement -> . FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE
+    (27) while_statement -> . WHILE LPAREN expr RPAREN LBRACE block RBRACE
+    (23) if_statement -> . IF LPAREN expr RPAREN LBRACE block RBRACE else_statement
+    (37) assign_statement -> . ID ASSIGN expr SEMI
+    (36) main_declaration -> . VOID MAIN LPAREN RPAREN LBRACE block RBRACE
+    (34) var_declaration -> . TYPE ID SEMI
+    (35) var_declaration -> . TYPE ID ASSIGN expr SEMI
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+  ! reduce/reduce conflict for RBRACE resolved using rule 1 (block -> .)
+    DEFAULT         shift and go to state 112
+    CASE            shift and go to state 113
+    RBRACE          reduce using rule 1 (block -> .)
+    CONTINUE        shift and go to state 18
+    BREAK           shift and go to state 19
+    RETURN          shift and go to state 20
+    SWITCH          shift and go to state 21
+    FOR             shift and go to state 23
+    WHILE           shift and go to state 24
+    IF              shift and go to state 25
+    ID              shift and go to state 22
+    VOID            shift and go to state 26
+    TYPE            shift and go to state 27
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    block                          shift and go to state 111
+    switch_block                   shift and go to state 135
+    statements                     shift and go to state 2
+    statement                      shift and go to state 3
+    minusminus_statement           shift and go to state 4
+    plusplus_statement             shift and go to state 5
+    continue_statement             shift and go to state 6
+    break_statement                shift and go to state 7
+    return_statement               shift and go to state 8
+    switch_statement               shift and go to state 9
+    for_statement                  shift and go to state 10
+    while_statement                shift and go to state 11
+    if_statement                   shift and go to state 12
+    assign_statement               shift and go to state 13
+    main_declaration               shift and go to state 14
+    var_declaration                shift and go to state 15
+    minusminus_expr                shift and go to state 16
+    plusplus_expr                  shift and go to state 17
+
+state 132
+
+    (28) for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE . block RBRACE
+    (1) block -> .
+    (2) block -> . statements
+    (3) statements -> . statements statement
+    (4) statements -> . statement
+    (5) statement -> . minusminus_statement
+    (6) statement -> . plusplus_statement
+    (7) statement -> . continue_statement
+    (8) statement -> . break_statement
+    (9) statement -> . return_statement
+    (10) statement -> . switch_statement
+    (11) statement -> . for_statement
+    (12) statement -> . while_statement
+    (13) statement -> . if_statement
+    (14) statement -> . assign_statement
+    (15) statement -> . main_declaration
+    (16) statement -> . var_declaration
+    (18) minusminus_statement -> . minusminus_expr SEMI
+    (17) plusplus_statement -> . plusplus_expr SEMI
+    (19) continue_statement -> . CONTINUE SEMI
+    (20) break_statement -> . BREAK SEMI
+    (21) return_statement -> . RETURN SEMI
+    (22) return_statement -> . RETURN expr SEMI
+    (29) switch_statement -> . SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE
+    (28) for_statement -> . FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE
+    (27) while_statement -> . WHILE LPAREN expr RPAREN LBRACE block RBRACE
+    (23) if_statement -> . IF LPAREN expr RPAREN LBRACE block RBRACE else_statement
+    (37) assign_statement -> . ID ASSIGN expr SEMI
+    (36) main_declaration -> . VOID MAIN LPAREN RPAREN LBRACE block RBRACE
+    (34) var_declaration -> . TYPE ID SEMI
+    (35) var_declaration -> . TYPE ID ASSIGN expr SEMI
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    RBRACE          reduce using rule 1 (block -> .)
+    CONTINUE        shift and go to state 18
+    BREAK           shift and go to state 19
+    RETURN          shift and go to state 20
+    SWITCH          shift and go to state 21
+    FOR             shift and go to state 23
+    WHILE           shift and go to state 24
+    IF              shift and go to state 25
+    ID              shift and go to state 22
+    VOID            shift and go to state 26
+    TYPE            shift and go to state 27
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    var_declaration                shift and go to state 15
+    assign_statement               shift and go to state 13
+    block                          shift and go to state 136
+    statements                     shift and go to state 2
+    statement                      shift and go to state 3
+    minusminus_statement           shift and go to state 4
+    plusplus_statement             shift and go to state 5
+    continue_statement             shift and go to state 6
+    break_statement                shift and go to state 7
+    return_statement               shift and go to state 8
+    switch_statement               shift and go to state 9
+    for_statement                  shift and go to state 10
+    while_statement                shift and go to state 11
+    if_statement                   shift and go to state 12
+    main_declaration               shift and go to state 14
+    minusminus_expr                shift and go to state 16
+    plusplus_expr                  shift and go to state 17
+
+state 133
+
+    (25) else_statement -> ELSE LBRACE . block RBRACE
+    (1) block -> .
+    (2) block -> . statements
+    (3) statements -> . statements statement
+    (4) statements -> . statement
+    (5) statement -> . minusminus_statement
+    (6) statement -> . plusplus_statement
+    (7) statement -> . continue_statement
+    (8) statement -> . break_statement
+    (9) statement -> . return_statement
+    (10) statement -> . switch_statement
+    (11) statement -> . for_statement
+    (12) statement -> . while_statement
+    (13) statement -> . if_statement
+    (14) statement -> . assign_statement
+    (15) statement -> . main_declaration
+    (16) statement -> . var_declaration
+    (18) minusminus_statement -> . minusminus_expr SEMI
+    (17) plusplus_statement -> . plusplus_expr SEMI
+    (19) continue_statement -> . CONTINUE SEMI
+    (20) break_statement -> . BREAK SEMI
+    (21) return_statement -> . RETURN SEMI
+    (22) return_statement -> . RETURN expr SEMI
+    (29) switch_statement -> . SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE
+    (28) for_statement -> . FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE
+    (27) while_statement -> . WHILE LPAREN expr RPAREN LBRACE block RBRACE
+    (23) if_statement -> . IF LPAREN expr RPAREN LBRACE block RBRACE else_statement
+    (37) assign_statement -> . ID ASSIGN expr SEMI
+    (36) main_declaration -> . VOID MAIN LPAREN RPAREN LBRACE block RBRACE
+    (34) var_declaration -> . TYPE ID SEMI
+    (35) var_declaration -> . TYPE ID ASSIGN expr SEMI
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    RBRACE          reduce using rule 1 (block -> .)
+    CONTINUE        shift and go to state 18
+    BREAK           shift and go to state 19
+    RETURN          shift and go to state 20
+    SWITCH          shift and go to state 21
+    FOR             shift and go to state 23
+    WHILE           shift and go to state 24
+    IF              shift and go to state 25
+    ID              shift and go to state 22
+    VOID            shift and go to state 26
+    TYPE            shift and go to state 27
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    block                          shift and go to state 137
+    statements                     shift and go to state 2
+    statement                      shift and go to state 3
+    minusminus_statement           shift and go to state 4
+    plusplus_statement             shift and go to state 5
+    continue_statement             shift and go to state 6
+    break_statement                shift and go to state 7
+    return_statement               shift and go to state 8
+    switch_statement               shift and go to state 9
+    for_statement                  shift and go to state 10
+    while_statement                shift and go to state 11
+    if_statement                   shift and go to state 12
+    assign_statement               shift and go to state 13
+    main_declaration               shift and go to state 14
+    var_declaration                shift and go to state 15
+    minusminus_expr                shift and go to state 16
+    plusplus_expr                  shift and go to state 17
+
+state 134
+
+    (26) else_statement -> ELSE LPAREN . expr RPAREN LBRACE block RBRACE else_statement
+    (38) expr -> . literal
+    (39) expr -> . ID
+    (40) expr -> . minusminus_expr
+    (41) expr -> . plusplus_expr
+    (42) expr -> . LPAREN expr RPAREN
+    (43) expr -> . NOT expr
+    (44) expr -> . expr OR expr
+    (45) expr -> . expr AND expr
+    (46) expr -> . expr NEQUAL expr
+    (47) expr -> . expr EQUAL expr
+    (48) expr -> . expr GEQUAL expr
+    (49) expr -> . expr GREATERT expr
+    (50) expr -> . expr LEQUAL expr
+    (51) expr -> . expr LESST expr
+    (52) expr -> . expr MOD expr
+    (53) expr -> . expr DIVIDE expr
+    (54) expr -> . expr TIMES expr
+    (55) expr -> . expr MINUS expr
+    (56) expr -> . expr PLUS expr
+    (61) literal -> . BOOLEAN
+    (62) literal -> . STRING
+    (63) literal -> . CHAR
+    (64) literal -> . FLOAT
+    (65) literal -> . INTEGER
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    ID              shift and go to state 38
+    LPAREN          shift and go to state 41
+    NOT             shift and go to state 42
+    BOOLEAN         shift and go to state 43
+    STRING          shift and go to state 44
+    CHAR            shift and go to state 45
+    FLOAT           shift and go to state 46
+    INTEGER         shift and go to state 47
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    expr                           shift and go to state 138
+    literal                        shift and go to state 37
+    minusminus_expr                shift and go to state 39
+    plusplus_expr                  shift and go to state 40
+
+state 135
+
+    (33) switch_block -> CASE literal COL block switch_block .
+    RBRACE          reduce using rule 33 (switch_block -> CASE literal COL block switch_block .)
+
+
+state 136
+
+    (28) for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block . RBRACE
+    RBRACE          shift and go to state 139
+
+
+state 137
+
+    (25) else_statement -> ELSE LBRACE block . RBRACE
+    RBRACE          shift and go to state 140
+
+
+state 138
+
+    (26) else_statement -> ELSE LPAREN expr . RPAREN LBRACE block RBRACE else_statement
+    (44) expr -> expr . OR expr
+    (45) expr -> expr . AND expr
+    (46) expr -> expr . NEQUAL expr
+    (47) expr -> expr . EQUAL expr
+    (48) expr -> expr . GEQUAL expr
+    (49) expr -> expr . GREATERT expr
+    (50) expr -> expr . LEQUAL expr
+    (51) expr -> expr . LESST expr
+    (52) expr -> expr . MOD expr
+    (53) expr -> expr . DIVIDE expr
+    (54) expr -> expr . TIMES expr
+    (55) expr -> expr . MINUS expr
+    (56) expr -> expr . PLUS expr
+    RPAREN          shift and go to state 141
+    OR              shift and go to state 60
+    AND             shift and go to state 61
+    NEQUAL          shift and go to state 62
+    EQUAL           shift and go to state 63
+    GEQUAL          shift and go to state 64
+    GREATERT        shift and go to state 65
+    LEQUAL          shift and go to state 66
+    LESST           shift and go to state 67
+    MOD             shift and go to state 68
+    DIVIDE          shift and go to state 69
+    TIMES           shift and go to state 70
+    MINUS           shift and go to state 71
+    PLUS            shift and go to state 72
+
+
+state 139
+
+    (28) for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE .
+    CONTINUE        reduce using rule 28 (for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE .)
+    BREAK           reduce using rule 28 (for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE .)
+    RETURN          reduce using rule 28 (for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE .)
+    SWITCH          reduce using rule 28 (for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE .)
+    FOR             reduce using rule 28 (for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE .)
+    WHILE           reduce using rule 28 (for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE .)
+    IF              reduce using rule 28 (for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE .)
+    ID              reduce using rule 28 (for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE .)
+    VOID            reduce using rule 28 (for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE .)
+    TYPE            reduce using rule 28 (for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE .)
+    MINUSMINUS      reduce using rule 28 (for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE .)
+    PLUSPLUS        reduce using rule 28 (for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE .)
+    $end            reduce using rule 28 (for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE .)
+    RBRACE          reduce using rule 28 (for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE .)
+    DEFAULT         reduce using rule 28 (for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE .)
+    CASE            reduce using rule 28 (for_statement -> FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE .)
+
+
+state 140
+
+    (25) else_statement -> ELSE LBRACE block RBRACE .
+    CONTINUE        reduce using rule 25 (else_statement -> ELSE LBRACE block RBRACE .)
+    BREAK           reduce using rule 25 (else_statement -> ELSE LBRACE block RBRACE .)
+    RETURN          reduce using rule 25 (else_statement -> ELSE LBRACE block RBRACE .)
+    SWITCH          reduce using rule 25 (else_statement -> ELSE LBRACE block RBRACE .)
+    FOR             reduce using rule 25 (else_statement -> ELSE LBRACE block RBRACE .)
+    WHILE           reduce using rule 25 (else_statement -> ELSE LBRACE block RBRACE .)
+    IF              reduce using rule 25 (else_statement -> ELSE LBRACE block RBRACE .)
+    ID              reduce using rule 25 (else_statement -> ELSE LBRACE block RBRACE .)
+    VOID            reduce using rule 25 (else_statement -> ELSE LBRACE block RBRACE .)
+    TYPE            reduce using rule 25 (else_statement -> ELSE LBRACE block RBRACE .)
+    MINUSMINUS      reduce using rule 25 (else_statement -> ELSE LBRACE block RBRACE .)
+    PLUSPLUS        reduce using rule 25 (else_statement -> ELSE LBRACE block RBRACE .)
+    $end            reduce using rule 25 (else_statement -> ELSE LBRACE block RBRACE .)
+    RBRACE          reduce using rule 25 (else_statement -> ELSE LBRACE block RBRACE .)
+    DEFAULT         reduce using rule 25 (else_statement -> ELSE LBRACE block RBRACE .)
+    CASE            reduce using rule 25 (else_statement -> ELSE LBRACE block RBRACE .)
+
+
+state 141
+
+    (26) else_statement -> ELSE LPAREN expr RPAREN . LBRACE block RBRACE else_statement
+    LBRACE          shift and go to state 142
+
+
+state 142
+
+    (26) else_statement -> ELSE LPAREN expr RPAREN LBRACE . block RBRACE else_statement
+    (1) block -> .
+    (2) block -> . statements
+    (3) statements -> . statements statement
+    (4) statements -> . statement
+    (5) statement -> . minusminus_statement
+    (6) statement -> . plusplus_statement
+    (7) statement -> . continue_statement
+    (8) statement -> . break_statement
+    (9) statement -> . return_statement
+    (10) statement -> . switch_statement
+    (11) statement -> . for_statement
+    (12) statement -> . while_statement
+    (13) statement -> . if_statement
+    (14) statement -> . assign_statement
+    (15) statement -> . main_declaration
+    (16) statement -> . var_declaration
+    (18) minusminus_statement -> . minusminus_expr SEMI
+    (17) plusplus_statement -> . plusplus_expr SEMI
+    (19) continue_statement -> . CONTINUE SEMI
+    (20) break_statement -> . BREAK SEMI
+    (21) return_statement -> . RETURN SEMI
+    (22) return_statement -> . RETURN expr SEMI
+    (29) switch_statement -> . SWITCH LPAREN ID RPAREN LBRACE switch_block RBRACE
+    (28) for_statement -> . FOR LPAREN var_declaration SEMI expr SEMI assign_statement RPAREN LBRACE block RBRACE
+    (27) while_statement -> . WHILE LPAREN expr RPAREN LBRACE block RBRACE
+    (23) if_statement -> . IF LPAREN expr RPAREN LBRACE block RBRACE else_statement
+    (37) assign_statement -> . ID ASSIGN expr SEMI
+    (36) main_declaration -> . VOID MAIN LPAREN RPAREN LBRACE block RBRACE
+    (34) var_declaration -> . TYPE ID SEMI
+    (35) var_declaration -> . TYPE ID ASSIGN expr SEMI
+    (59) minusminus_expr -> . MINUSMINUS ID
+    (60) minusminus_expr -> . ID MINUSMINUS
+    (57) plusplus_expr -> . PLUSPLUS ID
+    (58) plusplus_expr -> . ID PLUSPLUS
+    RBRACE          reduce using rule 1 (block -> .)
+    CONTINUE        shift and go to state 18
+    BREAK           shift and go to state 19
+    RETURN          shift and go to state 20
+    SWITCH          shift and go to state 21
+    FOR             shift and go to state 23
+    WHILE           shift and go to state 24
+    IF              shift and go to state 25
+    ID              shift and go to state 22
+    VOID            shift and go to state 26
+    TYPE            shift and go to state 27
+    MINUSMINUS      shift and go to state 28
+    PLUSPLUS        shift and go to state 29
+
+    block                          shift and go to state 143
+    statements                     shift and go to state 2
+    statement                      shift and go to state 3
+    minusminus_statement           shift and go to state 4
+    plusplus_statement             shift and go to state 5
+    continue_statement             shift and go to state 6
+    break_statement                shift and go to state 7
+    return_statement               shift and go to state 8
+    switch_statement               shift and go to state 9
+    for_statement                  shift and go to state 10
+    while_statement                shift and go to state 11
+    if_statement                   shift and go to state 12
+    assign_statement               shift and go to state 13
+    main_declaration               shift and go to state 14
+    var_declaration                shift and go to state 15
+    minusminus_expr                shift and go to state 16
+    plusplus_expr                  shift and go to state 17
+
+state 143
+
+    (26) else_statement -> ELSE LPAREN expr RPAREN LBRACE block . RBRACE else_statement
+    RBRACE          shift and go to state 144
+
+
+state 144
+
+    (26) else_statement -> ELSE LPAREN expr RPAREN LBRACE block RBRACE . else_statement
+    (24) else_statement -> .
+    (25) else_statement -> . ELSE LBRACE block RBRACE
+    (26) else_statement -> . ELSE LPAREN expr RPAREN LBRACE block RBRACE else_statement
+    CONTINUE        reduce using rule 24 (else_statement -> .)
+    BREAK           reduce using rule 24 (else_statement -> .)
+    RETURN          reduce using rule 24 (else_statement -> .)
+    SWITCH          reduce using rule 24 (else_statement -> .)
+    FOR             reduce using rule 24 (else_statement -> .)
+    WHILE           reduce using rule 24 (else_statement -> .)
+    IF              reduce using rule 24 (else_statement -> .)
+    ID              reduce using rule 24 (else_statement -> .)
+    VOID            reduce using rule 24 (else_statement -> .)
+    TYPE            reduce using rule 24 (else_statement -> .)
+    MINUSMINUS      reduce using rule 24 (else_statement -> .)
+    PLUSPLUS        reduce using rule 24 (else_statement -> .)
+    $end            reduce using rule 24 (else_statement -> .)
+    RBRACE          reduce using rule 24 (else_statement -> .)
+    DEFAULT         reduce using rule 24 (else_statement -> .)
+    CASE            reduce using rule 24 (else_statement -> .)
+    ELSE            shift and go to state 130
+
+    else_statement                 shift and go to state 145
+
+state 145
+
+    (26) else_statement -> ELSE LPAREN expr RPAREN LBRACE block RBRACE else_statement .
+    CONTINUE        reduce using rule 26 (else_statement -> ELSE LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    BREAK           reduce using rule 26 (else_statement -> ELSE LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    RETURN          reduce using rule 26 (else_statement -> ELSE LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    SWITCH          reduce using rule 26 (else_statement -> ELSE LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    FOR             reduce using rule 26 (else_statement -> ELSE LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    WHILE           reduce using rule 26 (else_statement -> ELSE LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    IF              reduce using rule 26 (else_statement -> ELSE LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    ID              reduce using rule 26 (else_statement -> ELSE LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    VOID            reduce using rule 26 (else_statement -> ELSE LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    TYPE            reduce using rule 26 (else_statement -> ELSE LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    MINUSMINUS      reduce using rule 26 (else_statement -> ELSE LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    PLUSPLUS        reduce using rule 26 (else_statement -> ELSE LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    $end            reduce using rule 26 (else_statement -> ELSE LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    RBRACE          reduce using rule 26 (else_statement -> ELSE LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    DEFAULT         reduce using rule 26 (else_statement -> ELSE LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+    CASE            reduce using rule 26 (else_statement -> ELSE LPAREN expr RPAREN LBRACE block RBRACE else_statement .)
+
+
+Conflicts:
+
+shift/reduce conflict for CONTINUE in state 2 resolved as shift
+shift/reduce conflict for BREAK in state 2 resolved as shift
+shift/reduce conflict for RETURN in state 2 resolved as shift
+shift/reduce conflict for SWITCH in state 2 resolved as shift
+shift/reduce conflict for FOR in state 2 resolved as shift
+shift/reduce conflict for WHILE in state 2 resolved as shift
+shift/reduce conflict for IF in state 2 resolved as shift
+shift/reduce conflict for ID in state 2 resolved as shift
+shift/reduce conflict for VOID in state 2 resolved as shift
+shift/reduce conflict for TYPE in state 2 resolved as shift
+shift/reduce conflict for MINUSMINUS in state 2 resolved as shift
+shift/reduce conflict for PLUSPLUS in state 2 resolved as shift
+shift/reduce conflict for OR in state 74 resolved as shift
+shift/reduce conflict for AND in state 74 resolved as shift
+shift/reduce conflict for NEQUAL in state 74 resolved as shift
+shift/reduce conflict for EQUAL in state 74 resolved as shift
+shift/reduce conflict for GEQUAL in state 74 resolved as shift
+shift/reduce conflict for GREATERT in state 74 resolved as shift
+shift/reduce conflict for LEQUAL in state 74 resolved as shift
+shift/reduce conflict for LESST in state 74 resolved as shift
+shift/reduce conflict for MOD in state 74 resolved as shift
+shift/reduce conflict for DIVIDE in state 74 resolved as shift
+shift/reduce conflict for TIMES in state 74 resolved as shift
+shift/reduce conflict for MINUS in state 74 resolved as shift
+shift/reduce conflict for PLUS in state 74 resolved as shift
+shift/reduce conflict for OR in state 83 resolved as shift
+shift/reduce conflict for AND in state 83 resolved as shift
+shift/reduce conflict for NEQUAL in state 83 resolved as shift
+shift/reduce conflict for EQUAL in state 83 resolved as shift
+shift/reduce conflict for GEQUAL in state 83 resolved as shift
+shift/reduce conflict for GREATERT in state 83 resolved as shift
+shift/reduce conflict for LEQUAL in state 83 resolved as shift
+shift/reduce conflict for LESST in state 83 resolved as shift
+shift/reduce conflict for MOD in state 83 resolved as shift
+shift/reduce conflict for DIVIDE in state 83 resolved as shift
+shift/reduce conflict for TIMES in state 83 resolved as shift
+shift/reduce conflict for MINUS in state 83 resolved as shift
+shift/reduce conflict for PLUS in state 83 resolved as shift
+shift/reduce conflict for OR in state 84 resolved as shift
+shift/reduce conflict for AND in state 84 resolved as shift
+shift/reduce conflict for NEQUAL in state 84 resolved as shift
+shift/reduce conflict for EQUAL in state 84 resolved as shift
+shift/reduce conflict for GEQUAL in state 84 resolved as shift
+shift/reduce conflict for GREATERT in state 84 resolved as shift
+shift/reduce conflict for LEQUAL in state 84 resolved as shift
+shift/reduce conflict for LESST in state 84 resolved as shift
+shift/reduce conflict for MOD in state 84 resolved as shift
+shift/reduce conflict for DIVIDE in state 84 resolved as shift
+shift/reduce conflict for TIMES in state 84 resolved as shift
+shift/reduce conflict for MINUS in state 84 resolved as shift
+shift/reduce conflict for PLUS in state 84 resolved as shift
+shift/reduce conflict for OR in state 91 resolved as shift
+shift/reduce conflict for AND in state 91 resolved as shift
+shift/reduce conflict for NEQUAL in state 91 resolved as shift
+shift/reduce conflict for EQUAL in state 91 resolved as shift
+shift/reduce conflict for GEQUAL in state 91 resolved as shift
+shift/reduce conflict for GREATERT in state 91 resolved as shift
+shift/reduce conflict for LEQUAL in state 91 resolved as shift
+shift/reduce conflict for LESST in state 91 resolved as shift
+shift/reduce conflict for MOD in state 91 resolved as shift
+shift/reduce conflict for DIVIDE in state 91 resolved as shift
+shift/reduce conflict for TIMES in state 91 resolved as shift
+shift/reduce conflict for MINUS in state 91 resolved as shift
+shift/reduce conflict for PLUS in state 91 resolved as shift
+shift/reduce conflict for CONTINUE in state 127 resolved as shift
+shift/reduce conflict for BREAK in state 127 resolved as shift
+shift/reduce conflict for RETURN in state 127 resolved as shift
+shift/reduce conflict for SWITCH in state 127 resolved as shift
+shift/reduce conflict for FOR in state 127 resolved as shift
+shift/reduce conflict for WHILE in state 127 resolved as shift
+shift/reduce conflict for IF in state 127 resolved as shift
+shift/reduce conflict for ID in state 127 resolved as shift
+shift/reduce conflict for VOID in state 127 resolved as shift
+shift/reduce conflict for TYPE in state 127 resolved as shift
+shift/reduce conflict for MINUSMINUS in state 127 resolved as shift
+shift/reduce conflict for PLUSPLUS in state 127 resolved as shift
+reduce/reduce conflict in state 104 resolved using rule block -> <empty>
+rejected rule (switch_block -> <empty>) in state 104
+reduce/reduce conflict in state 131 resolved using rule block -> <empty>
+rejected rule (switch_block -> <empty>) in state 131
+Rule (switch_block -> <empty>) is never reduced
