@@ -1,7 +1,7 @@
 from sly import Lexer
 
 
-class JLexer(Lexer): 
+class JLexer(Lexer):
     tokens = {
         LBRACE, RBRACE, COL, SEMI,
         FOR, WHILE, IF, ELSE, SWITCH, CASE, BREAK,
@@ -12,11 +12,9 @@ class JLexer(Lexer):
         TYPE, ID, EQUAL, LEQUAL, GEQUAL, NEQUAL,
     }
 
-
     ignore = '[ \t]'
     ignore_comments = r'\/\/.*'
     ignore_multiline_comments = r'\/\*[^*]*\*+(?:[^/*][^*]*\*+)*\/'
-
     LPAREN = r'\('
     RPAREN = r'\)'
     LBRACE = r'{'
@@ -79,7 +77,7 @@ class JLexer(Lexer):
     ID['return'] = RETURN
 
     @_(r'\n+')
-    def ignore_enter(self, t):
+    def ignore_enter(self, t): 
         self.lineno += t.value.count('\n')
 
     def find_column(self, text, token):
