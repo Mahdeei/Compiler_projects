@@ -1,15 +1,22 @@
 from sly import Parser
 from lexer import JLexer
 
-
+# java parser
 class JParser(Parser): 
+    # initial 
     def __init__(self, symbolTable):
         super().__init__()
         self.symbolTable = symbolTable
 
+    # output file 
     debugfile = 'output.txt'
+    # get tokens
     tokens = JLexer.tokens
+    # define precedence
     precedence = (('nonassoc', EQUAL, LEQUAL, GEQUAL, NEQUAL, GREATERT, LESST), ('left', PLUS, MINUS), ('left', TIMES, DIVIDE),)
+
+
+    # define grammers --->
 
     @_("statements")
     def block(self, p):
@@ -315,6 +322,8 @@ class JParser(Parser):
         print('#51#', self.symstack, '\n')
         return ('boolean', p.BOOLEAN)
 
+
+    # rule for errors 
     def error(self, token):
         print(
             f'SYNTAX ERROR near character "{token.value}" at line {token.lineno}')
