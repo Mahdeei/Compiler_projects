@@ -2,7 +2,7 @@
 ## About The Project
 In this project, we have 2 phases. The first phase is related to lexical analysis. The second phase is related to parser analysis. In the following, we will give explanations for each phase separately.
 
-##Phase 1
+## Phase 1
 In this phase, we will have lexical analysis. In such a way that the user selects a text file and we analyze it lexically in Java language. The output of the file is also printed as a symbol table .
 
 Now let's go to the description of the code: We define the tokens that are in the Java language and also put the patterns that are supposed to recognize the tokens. For example, the comment or new line identification pattern.
