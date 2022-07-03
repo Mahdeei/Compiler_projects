@@ -33,6 +33,7 @@ if __name__ == "__main__":
     # token haro dar array mirizim
     for token in tokens:
         arr.append(token)
+        print(token)
 
     # dar in qesmat mikhahim symbol table ro besazim 
     for index,token in enumerate(arr):

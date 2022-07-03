@@ -102,3 +102,4 @@ class JLexer(Lexer): # java lexer
     def error(self, t):
         print(f'ERROR! Line {self.lineno}: Bad Character {t.value[0]}')
         self.index += 1
+    

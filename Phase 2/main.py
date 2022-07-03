@@ -24,8 +24,10 @@ if __name__ == "__main__":
     # parse tokens to result
     result = parser.parse(symt)
     # print tokens
-    print(JLexer.tokens)
+    # print(JLexer.tokens)
     # print results 
+
+    
     print("Critical---------------------")
     for item in result:
         print(item)
