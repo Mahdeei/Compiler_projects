@@ -13,17 +13,28 @@ new line :
     def ignore_enter(self, t): # filter newlines
         self.lineno += t.value.count('\n')
 ```
+
 or multiline comments
-
+```
 ignore_multiline_comments = r'\/\*[^*]*\*+(?:[^/*][^*]*\*+)*\/'
+```
+
+
 In the main file, the contents of the file are also read:
-
+```
 text = readfile("inputs/"+inpNum+".txt")
-Then the contents of the file goes to the lexical analysis class and returns the tokens.
+```
 
+
+Then the contents of the file goes to the lexical analysis class and returns the tokens.
+```
 tokens = lexer.tokenize(text) 
+```
+
+
 Then, to generate the symbol table, we need to check the tokens before and after, what type they are and what their value is, and if not, the value is set as undefined.
 
+```
 DATA_TYPES = ["CHAR", "STRING", "INT", "DOUBLE", "FLOATNUM", "LONG", "SHORT", "BOOLEAN"]
 
 LITERALS_LIST = ["CHAR_LIT", "STRING_LIT", "INTEGER", "FLOAT", "FALSE","TRUE"]
@@ -31,40 +42,57 @@ LITERALS_LIST = ["CHAR_LIT", "STRING_LIT", "INTEGER", "FLOAT", "FALSE","TRUE"]
 .
 .
 current_token_type = "undefined"
+```
+
+
 And finally, the symbol table is printed.
 
     for k, v in result.items():
 	    print(k+" : ",v)
-Phase 2
+	    
+	    
+## Phase 2
 In the second phase, we have parser analysis, which is the next step after lexical analysis.
 
+```
 symt = lexer.tokenize(text)
+```
+
 As in the first phase, we perform lexical analysis and then send the tokens we have recognized to the parser class.
-
+```
 result = parser.parse(symt)
+```
 In the parser class, we define precedence.
-
+```
 precedence = 
 (('nonassoc', EQUAL, LEQUAL, GEQUAL, NEQUAL, GREATERT, LESST), 
 ('left', PLUS, MINUS), 
 ('left', TIMES, DIVIDE),)
-Then we define the existing grammars. For example, the :
+```
 
+
+Then we define the existing grammars. For example, the :
+```
 @_("statements")
     def block(self, p):
      
       	return p.statements
-At the end, we put a function for error detection.
+```
 
+At the end, we put a function for error detection.
+```
 def error(self, token):
         print(
-            f'SYNTAX ERROR near character "{token.value}" at line {token.lineno}')	    
+            f'SYNTAX ERROR near character "{token.value}" at line {token.lineno}')	   
+```
+
 After the analysis process, the Pars tree output is printed for us.
 
 And at the end, the symbol table is printed again for us.
 
+```
 print('Symbol Table =>', mySymbolTable.symbols) 
-
+```
 
 
 
